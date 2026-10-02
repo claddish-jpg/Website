@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Calculation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sample Calculation</h1>
+
+    <label for="txtFirst">First Number:</label>
+    <input type="number" id="txtFirst">
+
+    <br><br>
+
+    <label for="txtSecond">Second Number:</label>
+    <input type="number" id="txtSecond">
+
+    <br><br>
+
+    <label for="txtResults">Result:</label>
+    <input type="text" id="txtResults" readonly>
+
+    <br><br>
+
+    <button id="btnCompute">Compute</button>
+    <button id="btnReset">Reset</button>
+
+    <script>
+        // textField1 = txtFirst
+        // textField2 = txtSecond
+        // textField3 = txtResults
+        // button1 = btnCompute
+        // button2 = btnReset
+
+        function getSum() {
+            const firstNumber = document.getElementById("txtFirst").value;
+            const secondNumber = document.getElementById("txtSecond").value;
+
+            var result = 0;
+
+            const fNum = parseInt(firstNumber, 10);
+            const sNum = parseInt(secondNumber, 10);
+
+            // Process the data
+            result = fNum + sNum;
+
+            // Display the data
+            document.getElementById("txtResults").value = result;
+
+            alert("hello");
+        }
+
+        function resetFields() {
+            document.getElementById("txtFirst").value = "";
+            document.getElementById("txtSecond").value = "";
+            document.getElementById("txtResults").value = "";
+        }
+
+        // Events
+        document.getElementById("btnCompute")
+            .addEventListener("click", getSum);
+
+        document.getElementById("btnReset")
+            .addEventListener("click", resetFields);
+    </script>
+
+</body>
+</html>

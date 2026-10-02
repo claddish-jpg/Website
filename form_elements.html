@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Elements Table</title>
+</head>
+<body>
+
+    <h1 align="center">HTML Form Elements</h1>
+
+    <form action="#" method="post" autocomplete="on" enctype="multipart/form-data">
+        <table border="1" width="70%" align="center">
+            <thead>
+                <tr>
+                    <th>Form Elements</th>
+                    <th>Sample Output</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 1: TEXT INPUTS</b></td>
+                </tr>
+                <tr>
+                    <td><label for="basic-text">Text Input:</label></td>
+                    <td><input type="text" id="basic-text" name="basic_text" placeholder="Enter plain text" maxlength="50"></td>
+                </tr>
+                <tr>
+                    <td><label for="user-password">Password Input:</label></td>
+                    <td><input type="password" id="user-password" name="user_password" placeholder="Enter password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="user-email">Email Input:</label></td>
+                    <td><input type="email" id="user-email" name="user_email" placeholder="user@example.com" multiple></td>
+                </tr>
+                <tr>
+                    <td><label for="user-url">URL Input:</label></td>
+                    <td><input type="url" id="user-url" name="user_url" placeholder="https://example.com"></td>
+                </tr>
+                <tr>
+                    <td><label for="user-tel">Telephone Input:</label></td>
+                    <td><input type="tel" id="user-tel" name="user_tel" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></td>
+                </tr>
+                <tr>
+                    <td><label for="site-search">Search Input:</label></td>
+                    <td><input type="search" id="site-search" name="site_search" placeholder="Search site..."></td>
+                </tr>
+                <tr>
+                    <td><label for="user-bio">Textarea (Multi-line Text):</label></td>
+                    <td><textarea id="user-bio" name="user_bio" rows="4" cols="30" placeholder="Type your biography here..."></textarea></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 2: NUMERICAL &amp; RANGE</b></td>
+                </tr>
+                <tr>
+                    <td><label for="user-age">Number Input:</label></td>
+                    <td><input type="number" id="user-age" name="user_age" min="1" max="120" value="25"></td>
+                </tr>
+                <tr>
+                    <td><label for="volume-level">Range Input (Slider):</label></td>
+                    <td><input type="range" id="volume-level" name="volume_level" min="0" max="100" step="5" value="50"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 3: DATE &amp; TIME CONTROLS</b></td>
+                </tr>
+                <tr>
+                    <td><label for="event-date">Date Input:</label></td>
+                    <td><input type="date" id="event-date" name="event_date" min="2020-01-01" max="2030-12-31"></td>
+                </tr>
+                <tr>
+                    <td><label for="event-time">Time Input:</label></td>
+                    <td><input type="time" id="event-time" name="event_time"></td>
+                </tr>
+                <tr>
+                    <td><label for="event-datetime">Date &amp; Time Local Input:</label></td>
+                    <td><input type="datetime-local" id="event-datetime" name="event_datetime"></td>
+                </tr>
+                <tr>
+                    <td><label for="card-expiry-month">Month Input:</label></td>
+                    <td><input type="month" id="card-expiry-month" name="card_expiry_month"></td>
+                </tr>
+                <tr>
+                    <td><label for="project-week">Week Input:</label></td>
+                    <td><input type="week" id="project-week" name="project_week"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 4: SELECTION CONTROLS</b></td>
+                </tr>
+                <tr>
+                    <td><label for="terms-agree">Single Checkbox:</label></td>
+                    <td>
+                        <input type="checkbox" id="terms-agree" name="terms_agree" value="accepted">
+                        <label for="terms-agree">I agree to the terms and conditions</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hobbies (Multiple Checkboxes):</td>
+                    <td>
+                        <input type="checkbox" id="hobby-reading" name="hobbies" value="reading">
+                        <label for="hobby-reading">Reading</label><br>
+                        <input type="checkbox" id="hobby-sports" name="hobbies" value="sports">
+                        <label for="hobby-sports">Sports</label><br>
+                        <input type="checkbox" id="hobby-coding" name="hobbies" value="coding" checked>
+                        <label for="hobby-coding">Coding</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contact Preference (Radio Buttons):</td>
+                    <td>
+                        <input type="radio" id="pref-email" name="contact_pref" value="email" checked>
+                        <label for="pref-email">Email</label><br>
+                        <input type="radio" id="pref-phone" name="contact_pref" value="phone">
+                        <label for="pref-phone">Phone</label><br>
+                        <input type="radio" id="pref-mail" name="contact_pref" value="mail">
+                        <label for="pref-mail">Mail</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="country-select">Select Dropdown:</label></td>
+                    <td>
+                        <select id="country-select" name="country_select">
+                            <option value="" disabled selected>-- Select a Country --</option>
+                            <optgroup label="North America">
+                                <option value="us">United States</option>
+                                <option value="ca">Canada</option>
+                            </optgroup>
+                            <optgroup label="Europe">
+                                <option value="uk">United Kingdom</option>
+                                <option value="fr">France</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="skills-select">Multiple Select Box:</label></td>
+                    <td>
+                        <select id="skills-select" name="skills_select" multiple size="4">
+                            <option value="html">HTML5</option>
+                            <option value="css">CSS3</option>
+                            <option value="js">JavaScript</option>
+                            <option value="sql">SQL</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="browser-choice">Datalist Input (Autocompletion):</label></td>
+                    <td>
+                        <input list="browsers" id="browser-choice" name="browser_choice" placeholder="Type or choose a browser">
+                        <datalist id="browsers">
+                            <option value="Google Chrome">
+                            <option value="Mozilla Firefox">
+                            <option value="Apple Safari">
+                            <option value="Microsoft Edge">
+                            <option value="Brave">
+                        </datalist>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 5: FILE &amp; MEDIA</b></td>
+                </tr>
+                <tr>
+                    <td><label for="user-avatar">File Input (Single/Multiple):</label></td>
+                    <td><input type="file" id="user-avatar" name="user_avatar" accept="image/*,.pdf" multiple></td>
+                </tr>
+                <tr>
+                    <td><label for="fav-color">Color Picker Input:</label></td>
+                    <td><input type="color" id="fav-color" name="fav_color" value="#ff0000"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 6: SPECIAL, DISPLAY &amp; HIDDEN</b></td>
+                </tr>
+                <tr>
+                    <td>Hidden Input:</td>
+                    <td>
+                        <i>(Hidden field present in HTML)</i>
+                        <input type="hidden" id="user-id" name="user_id" value="12345">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Output Element:</td>
+                    <td>
+                        <input type="number" id="a" value="50"> +
+                        <input type="number" id="b" value="25"> =
+                        <output name="x" for="a b">75</output>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Meter Element:</td>
+                    <td>
+                        <meter id="disk-usage" min="0" max="100" low="33" high="66" optimum="80" value="50">50%</meter>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Progress Element:</td>
+                    <td>
+                        <progress id="file-progress" max="100" value="70">70%</progress>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><b>CATEGORY 7: BUTTON CONTROLS</b></td>
+                </tr>
+                <tr>
+                    <td>Submit Button:</td>
+                    <td><input type="submit" value="Submit Form"></td>
+                </tr>
+                <tr>
+                    <td>Reset Button:</td>
+                    <td><input type="reset" value="Reset Form"></td>
+                </tr>
+                <tr>
+                    <td>Generic Input Button:</td>
+                    <td><input type="button" value="Click Me" onclick="alert('Button Clicked!')"></td>
+                </tr>
+                <tr>
+                    <td>HTML5 Button Tags:</td>
+                    <td>
+                        <button type="submit">Submit Tag</button>
+                        <button type="reset">Reset Tag</button>
+                        <button type="button">Custom Button</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</body>
+</html>
