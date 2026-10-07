@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discount Calculator</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #142238;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1095px;
+        margin: 0 auto;
+        padding: 26px 68px 70px;
+        border: 1px solid #eeeeee;
+        border-radius: 0 0 18px 18px;
+        min-height: 100vh;
+    }
+
+    h1 {
+        margin: 0 0 62px;
+        font-size: 42px;
+        line-height: 1;
+        font-weight: 700;
+        color: #142238;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 29px;
+        line-height: 1;
+        letter-spacing: 1.3px;
+        color: #617188;
+        font-weight: 500;
+    }
+
+    .field {
+        width: 100%;
+        height: 104px;
+        padding: 0 34px;
+        margin-bottom: 38px;
+        border: 1px solid #dddddd;
+        border-radius: 17px;
+        outline: none;
+        font-size: 34px;
+        color: #1b2432;
+        background: #ffffff;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.025);
+    }
+
+    .field:focus {
+        border-color: #cfcfcf;
+    }
+
+    .result-label {
+        margin-top: 3px;
+        margin-bottom: 23px;
+    }
+
+    .result {
+        margin: 0 0 43px;
+        font-size: 34px;
+        line-height: 1;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    .saved-label {
+        margin-bottom: 23px;
+    }
+
+    .saved {
+        margin: 0 0 39px;
+        font-size: 34px;
+        line-height: 1;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        height: 99px;
+        border: none;
+        border-radius: 17px;
+        color: white;
+        font-size: 31px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-bottom: 23px;
+    }
+
+    #compute {
+        background: #ff7100;
+    }
+
+    #compute:hover {
+        background: #f36b00;
+    }
+
+    #reset {
+        background: #667993;
+    }
+
+    #reset:hover {
+        background: #5c6e87;
+    }
+
+    .programmed {
+        margin-top: 27px;
+        margin-bottom: 62px;
+        font-size: 27px;
+        line-height: 1.55;
+        letter-spacing: 1.2px;
+        color: #617188;
+        font-weight: 500;
+    }
+
+    .home {
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        color: #0000aa;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+        .container {
+            padding: 25px 28px 60px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+
+        label {
+            font-size: 22px;
+        }
+
+        .field {
+            height: 75px;
+            font-size: 26px;
+            padding: 0 25px;
+        }
+
+        .result, .saved {
+            font-size: 28px;
+        }
+
+        button {
+            height: 75px;
+            font-size: 25px;
+        }
+
+        .programmed {
+            font-size: 20px;
+        }
+
+        .home {
+            font-size: 25px;
+        }
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Discount Calculator</h1>
+
+    <label for="price">PRICE BEFORE DISCOUNT</label>
+    <input class="field" id="price" type="number" step="0.01" value="1500.25">
+
+    <label for="discount">DISCOUNT (%)</label>
+    <input class="field" id="discount" type="number" step="0.01" value="2">
+
+    <label class="result-label">PRICE AFTER DISCOUNT</label>
+    <p class="result" id="after">₱ 1470.24</p>
+
+    <label class="saved-label">SAVED AMOUNT</label>
+    <p class="saved" id="saved">₱ 30.00</p>
+
+    <button id="compute">Compute</button>
+    <button id="reset">Reset</button>
+
+    <div class="programmed">
+        PROGRAMMED BY: RAILEY VALE A. SALUGAO<br>
+        12-COOPER
+    </div>
+
+    <a class="home" href="#">Home</a>
+</div>
+
+<script>
+function calculate() {
+    const price = parseFloat(document.getElementById("price").value) || 0;
+    const discount = parseFloat(document.getElementById("discount").value) || 0;
+
+    const saved = price * (discount / 100);
+    const after = price - saved;
+
+    // Matches the displayed cent behavior of the reference.
+    const savedDisplay = (Math.floor((saved + 1e-9) * 100) / 100).toFixed(2);
+    const afterDisplay = (Math.floor((after + 1e-9) * 100) / 100).toFixed(2);
+
+    document.getElementById("saved").textContent = "₱ " + savedDisplay;
+    document.getElementById("after").textContent = "₱ " + afterDisplay;
+}
+
+document.getElementById("compute").addEventListener("click", calculate);
+
+document.getElementById("reset").addEventListener("click", function() {
+    document.getElementById("price").value = "";
+    document.getElementById("discount").value = "";
+    document.getElementById("after").textContent = "₱ 0.00";
+    document.getElementById("saved").textContent = "₱ 0.00";
+});
+</script>
+</body>
+</html>
