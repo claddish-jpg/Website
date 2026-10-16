@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule - Grade 12 - Cooper</title>
+    <style>
+        :root {
+            --cherry-dark: #7a3e50;
+            --cherry-plank: #c4768c;
+            --cherry-light: #e09ab0;
+            --cherry-accent: #f2c2d1;
+            --cherry-text: #3a1520;
+            --bg-color: #2b131c;
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--cherry-text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .schedule-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--cherry-plank);
+            border: 4px solid var(--cherry-dark);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px var(--cherry-dark);
+        }
+        .schedule-header h2 { margin: 0 0 5px; font-size: 1.8rem; letter-spacing: 1px; }
+        .schedule-header p { margin: 3px 0; font-size: 0.95rem; font-weight: bold; color: var(--cherry-accent); }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; min-width: 760px; border-collapse: collapse; background-color: var(--cherry-light); text-align: center; }
+        th, td { border: 2px solid var(--cherry-dark); padding: 10px 6px; font-size: 0.85rem; vertical-align: middle; }
+        th { background-color: var(--cherry-dark); color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        td:first-child { background-color: #d1889c; font-weight: bold; color: #2b131c; width: 14%; }
+        .special-row td { background-color: var(--cherry-accent); color: var(--cherry-dark); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+        .subject { font-weight: 600; display: block; margin-bottom: 2px; color: #2b131c; }
+        .teacher { font-size: 0.75rem; font-style: italic; color: #591b2c; font-weight: bold; display: block; }
+        .highlight-cell { background-color: #ebd1d8; }
+        @media print {
+            body { background: #fff; padding: 0; min-height: auto; }
+            .schedule-container { width: 100%; max-width: none; box-shadow: none; border-radius: 0; }
+            .table-wrap { overflow: visible; }
+            table { min-width: 0; }
+        }
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .schedule-container { padding: 10px; }
+            .schedule-header h2 { font-size: 1.45rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="schedule-container">
+    <div class="schedule-header">
+        <h2>CLASS SCHEDULE</h2>
+        <p>FIRST TERM S.Y. 2026-2027</p>
+        <p>GRADE 12 - COOPER</p>
+        <p>ROOM: TVL 203</p>
+    </div>
+    <div class="table-wrap">
+    <table>
+        <thead><tr><th>TIME</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th></tr></thead>
+        <tbody>
+            <tr><td>7:30 am - 8:30 am<br><small>(60 minutes)</small></td><td colspan="5"></td></tr>
+            <tr><td>8:30 am - 11:00 am<br><small>(150 minutes)</small></td><td colspan="5"></td></tr>
+            <tr class="special-row"><td colspan="6">ARRIVALS</td></tr>
+            <tr><td>11:30 am - 1:30 pm<br><small>(60 minutes)</small></td>
+                <td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td>
+            </tr>
+            <tr><td>1:30 pm - 2:30 pm<br><small>(60 minutes)</small></td>
+                <td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td><td><span class="subject">Computer Programming Java</span><span class="teacher">DE VERA</span></td>
+            </tr>
+            <tr><td>2:30 pm - 3:30 pm<br><small>(60 minutes)</small></td>
+                <td><span class="subject">Pagbasa sa Filipino sa Piling Larang</span><span class="teacher">ODIONO</span></td><td><span class="subject">Pagbasa sa Filipino sa Piling Larang</span><span class="teacher">ODIONO</span></td><td><span class="subject">Entrepreneurship</span><span class="teacher">PAEZ</span></td><td><span class="subject">Entrepreneurship</span><span class="teacher">PAEZ</span></td><td><span class="subject">Entrepreneurship</span><span class="teacher">PAEZ</span></td>
+            </tr>
+            <tr class="special-row"><td colspan="6">BREAK TIME</td></tr>
+            <tr><td>3:45 pm - 4:45 pm<br><small>(60 minutes)</small></td>
+                <td class="highlight-cell"><span class="subject">Homeroom Guidance</span><span class="teacher">MANTALA</span></td><td><span class="subject">English for Academic and Professional Purposes</span><span class="teacher">MANTALA</span></td><td><span class="subject">Pagbasa sa Filipino sa Piling Larang</span><span class="teacher">ODIONO</span></td><td><span class="subject">Physical Education and Health 4</span><span class="teacher">DEMEGILLO</span></td><td><span class="subject">Entrepreneurship</span><span class="teacher">PAEZ</span></td>
+            </tr>
+            <tr><td>4:45 pm - 5:45 pm<br><small>(60 minutes)</small></td>
+                <td><span class="subject">English for Academic and Professional Purposes</span><span class="teacher">MANTALA</span></td><td><span class="subject">English for Academic and Professional Purposes</span><span class="teacher">MANTALA</span></td><td><span class="subject">Pagbasa sa Filipino sa Piling Larang</span><span class="teacher">ODIONO</span></td><td><span class="subject">Physical Education and Health 4</span><span class="teacher">DEMEGILLO</span></td><td><span class="subject">Pagbasa sa Filipino sa Piling Larang</span><span class="teacher">ODIONO</span></td>
+            </tr>
+            <tr><td>5:45 pm - 6:45 pm<br><small>(60 minutes)</small></td>
+                <td><span class="subject">English for Academic and Professional Purposes</span><span class="teacher">MANTALA</span></td><td><span class="subject">English for Academic and Professional Purposes</span><span class="teacher">MANTALA</span></td><td><span class="subject">Entrepreneurship</span><span class="teacher">PAEZ</span></td><td></td><td></td>
+            </tr>
+            <tr class="special-row"><td colspan="6">DEPARTURE</td></tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+</body>
+</html>
