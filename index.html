@@ -1,97 +1,438 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Railey Vale A. Salugao</title>
-    <style>
-        body {
-           font-family: Arial, sans-serif;
-           display: flex;
-           flex-direction: column;
-           justify-content: center;
-           align-items: center;
-           min-height: 100vh;
-           margin: 0;
-           padding: 20px;
-           gap: 20px;
-           background-color: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Railey Vale A. Salugao | Portfolio</title>
 
-        .container {
-            text-align: center;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+<style>
+:root {
+    --bg: #101827;
+    --panel: #182337;
+    --panel2: #202e44;
+    --text: #edf3fa;
+    --muted: #aab8ca;
+    --accent: #63e6d4;
+    --purple: #b7a0ff;
+    --line: #304057;
+}
 
-        h1 {
-            margin: 0 0 10px 0;
-            color: #333333;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        p {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #666666;
-        }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
 
-        .activity-link {
-            display: inline-block;
-            background-color: #333333;
-            color: white;
-            padding: 12px 20px;
-             margin: 5px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-       }
+header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 24px;
+}
 
-        .activity-link:hover {
-            background-color: #555555;
-       }
-    </style>
-    
+.nav-wrap {
+    max-width: 1180px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.nav-selector {
+    font-size: 15px;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.nav-selector:hover,
+.nav-selector.active {
+    color: var(--accent);
+    background: var(--panel2);
+}
+
+main {
+    max-width: 1180px;
+    min-height: 70vh;
+    margin: auto;
+    padding: 40px 24px;
+}
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+.hero {
+    padding: 60px 0;
+    min-height: 380px;
+}
+
+.kicker,
+.index {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: clamp(34px, 6vw, 60px);
+    line-height: 1.15;
+    margin: 12px 0 20px;
+}
+
+h1 span {
+    color: var(--accent);
+}
+
+h2,
+h3 {
+    margin-top: 0;
+}
+
+.page-intro {
+    max-width: 700px;
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn.primary {
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn.secondary {
+    color: var(--text);
+    background: var(--panel);
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.project {
+    padding: 22px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 12px;
+}
+
+.num {
+    color: var(--accent);
+}
+
+.type {
+    color: var(--purple);
+}
+
+.project h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.project p {
+    color: var(--muted);
+    font-size: 14px;
+    min-height: 45px;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 22px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 12px;
+    }
+
+    nav {
+        gap: 2px;
+    }
+
+    .nav-selector {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    main {
+        padding: 24px 16px;
+    }
+
+    .hero {
+        padding: 35px 0;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Railey Vale A. Salugao</h1>
-        <p>Grade 12 Cooper</p>
+<header>
+    <div class="nav-wrap">
+        <nav aria-label="Main navigation">
+            <button class="nav-selector active" type="button"
+                data-section="home">Home</button>
+
+            <button class="nav-selector" type="button"
+                data-section="about">About</button>
+
+            <button class="nav-selector" type="button"
+                data-section="gallery">Gallery</button>
+
+            <button class="nav-selector" type="button"
+                data-section="portfolio">Portfolio</button>
+
+            <button class="nav-selector" type="button"
+                data-section="skills">Skills</button>
+
+            <button class="nav-selector" type="button"
+                data-section="contact">Contact</button>
+        </nav>
     </div>
+</header>
 
-    <div class="container">
-    <h2>My HTML Activities</h2>
-    <p>Select an activity below:</p>
+<main>
 
-    <br>
+    <!-- HOME: CONTENT KEPT -->
+    <section id="home" class="page-section active">
+        <section class="hero">
+            <div class="kicker">Portfolio For HTML</div>
 
-    <a href="text_inputs.html" class="activity-link">Text Inputs</a>
-<br><br>
+            <h1>
+                Railey Vale A. Salugao<span>.</span>
+            </h1>
 
-<a href="form_elements.html" class="activity-link">Form Elements</a>
-<br><br>
+            <p class="page-intro">
+                Welcome to my portfolio. Explore my background,
+                gallery, skills, and web development activities in HTML, CSS, and JAVASCRIPT.
+            </p>
 
-<a href="technova_employee_portal_login.html" class="activity-link">
-    TechNova Employee Portal
-</a>
-<br><br>
+            <div class="actions">
+                <button class="btn primary" type="button"
+                    data-section="portfolio">
+                    View Projects ↗
+                </button>
 
-<a href="sample_calculation.html" class="activity-link">
-    Sample Calculation
-</a>
-<br><br>
+                <button class="btn secondary" type="button"
+                    data-section="contact">
+                    Contact
+                </button>
+            </div>
+        </section>
+    </section>
 
-<a href="discount_calculator_railey.html" class="activity-link">
-    Discount Calculator 
-</a>
-<br> </br>
+    <!-- ABOUT: COMPLETELY EMPTY -->
+    <section id="about" class="page-section"></section>
 
-<a href="NET_developer_profile.html" class="activity-link">
-    .NET Developer Profile
-</a>
-    </div>
+    <!-- GALLERY: COMPLETELY EMPTY -->
+    <section id="gallery" class="page-section"></section>
+
+    <!-- PORTFOLIO: ALL PROJECTS ARE HERE -->
+    <section id="portfolio" class="page-section">
+        <div class="index">PORTFOLIO</div>
+
+        <h1>Selected Projects<span>.</span></h1>
+
+        <p class="page-intro">
+            My web development activities and projects.
+        </p>
+
+        <div class="projects">
+
+            <article class="project">
+                <div class="project-top">
+                    <span class="num">PROJECT_01</span>
+                    <span class="type">HTML</span>
+                </div>
+
+                <h3>Text Inputs</h3>
+                <p>
+                    HTML activity demonstrating text input fields
+                    and common input types.
+                </p>
+                <a href="text_inputs.html">Open project ↗</a>
+            </article>
+
+            <article class="project">
+                <div class="project-top">
+                    <span class="num">PROJECT_02</span>
+                    <span class="type">HTML FORMS</span>
+                </div>
+
+                <h3>Form Elements</h3>
+                <p>
+                    HTML form controls and elements.
+                </p>
+                <a href="form_elements.html">Open project ↗</a>
+            </article>
+
+            <article class="project">
+                <div class="project-top">
+                    <span class="num">PROJECT_03</span>
+                    <span class="type">WEB UI</span>
+                </div>
+
+                <h3>TechNova Employee Portal</h3>
+                <p>
+                    A sample employee portal login interface
+                    built with HTML and CSS.
+                </p>
+                <a href="technova_employee_portal_login.html">
+                    Open project ↗
+                </a>
+            </article>
+
+            <article class="project">
+                <div class="project-top">
+                    <span class="num">PROJECT_04</span>
+                    <span class="type">JAVASCRIPT</span>
+                </div>
+
+                <h3>Sample Calculation</h3>
+                <p>
+                    A simple calculator activity with compute
+                    and reset controls.
+                </p>
+                <a href="sample_calculation.html">Open project ↗</a>
+            </article>
+
+            <article class="project">
+                <div class="project-top">
+                    <span class="num">PROJECT_05</span>
+                    <span class="type">JAVASCRIPT</span>
+                </div>
+
+                <h3>Discount Calculator</h3>
+                <p>
+                    Calculates the discounted price and amount
+                    saved from a percentage.
+                </p>
+                <a href="discount_calculator_railey.html">
+                    Open project ↗
+                </a>
+            </article>
+
+            <article class="project">
+                <div class="project-top">
+                    <span class="num">PROJECT_06</span>
+                    <span class="type">PROFILE PAGE</span>
+                </div>
+
+                <h3>.NET Developer Profile</h3>
+                <p>
+                    Personal developer profile with a
+                    cherry-inspired color theme.
+                </p>
+                <a href="NET_developer_profile.html">
+                    Open project ↗
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- SKILLS: COMPLETELY EMPTY -->
+    <section id="skills" class="page-section"></section>
+
+    <!-- CONTACT: COMPLETELY EMPTY -->
+    <section id="contact" class="page-section"></section>
+
+</main>
+
+<footer>
+    Designed by Railey Vale A. Salugao
+</footer>
+
+<script>
+document.querySelectorAll("[data-section]").forEach(function (control) {
+    control.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const target = control.getAttribute("data-section");
+
+        document.querySelectorAll(".page-section").forEach(function (section) {
+            section.classList.toggle("active", section.id === target);
+        });
+
+        document.querySelectorAll(".nav-selector").forEach(function (button) {
+            button.classList.toggle(
+                "active",
+                button.getAttribute("data-section") === target
+            );
+        });
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+</script>
 
 </body>
 </html>
