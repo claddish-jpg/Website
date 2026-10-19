@@ -1,6 +1,6 @@
-fetch('Students.json')
+fetch('Students.Json')
     .then(function(response){
-        return response.json();
+        return response.Json();
     })
     .then(function(students){
         let placeholder = document.querySelector("#output");
