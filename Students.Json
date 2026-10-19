@@ -1,0 +1,21 @@
+[
+  { "lrn": 100111, "name": "Jethro Rosales", "age": 18, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Jethro+Rosales" },
+
+  { "lrn": 100112, "name": "Prince Paglinawan", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Prince+Paglinawan" },
+
+  { "lrn": 100113, "name": "Dale Peralta", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Dale+Peralta" },
+
+  { "lrn": 100114, "name": "Railey Salugao", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Railey+Salugao" },
+
+  { "lrn": 100115, "name": "Vaughn Cruz", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Vaughn+Cruz" },
+
+  { "lrn": 100116, "name": "Nyt Concepcion", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Nyt+Concepcion" },
+
+  { "lrn": 100117, "name": "Ziantino Dela Cruz", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Ziantino+Dela+Cruz" },
+
+  { "lrn": 100118, "name": "Kiane Bauto", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Kiane+Bauto" },
+
+  { "lrn": 100119, "name": "Lance Maliksi", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Lance+Maliksi" },
+  
+  { "lrn": 100120, "name": "John Erson Jamero", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=John+Erson+Jamero" }
+]
