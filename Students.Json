@@ -1,4 +1,5 @@
 [
+
   { "lrn": 100111, "name": "Jethro Rosales", "age": 18, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Jethro+Rosales" },
 
   { "lrn": 100112, "name": "Prince Paglinawan", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Prince+Paglinawan" },
@@ -18,4 +19,5 @@
   { "lrn": 100119, "name": "Lance Maliksi", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=Lance+Maliksi" },
   
   { "lrn": 100120, "name": "John Erson Jamero", "age": 17, "section": "Cooper", "image": "https://placehold.co/140x180/e2e8f0/334155?text=John+Erson+Jamero" }
+
 ]
