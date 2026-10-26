@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Test</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --cherry-plank: #cf2aa8;
+      --cherry-light: #e5a0c3;
+      --cherry-mid: #b85b8e;
+      --cherry-seam: #51394f;
+      --cherry-dark: #71395f;
+      --text: #fff5fb;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #fff;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .home {
+      text-align: center;
+      padding: 17px 0 2px;
+      font-size: 28px;
+    }
+    .home a { color: #694078; }
+    .grid {
+      width: calc(100% - 30px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(240px, 1fr)) minmax(200px, 1fr);
+      gap: 30px;
+      background-color: var(--cherry-seam);
+      padding: 0;
+      min-height: calc(100vh - 270px);
+    }
+    .tile {
+      position: relative;
+      min-height: 240px;
+      padding: 17px 14px;
+      font-size: clamp(32px, 7vw, 60px);
+      background-color: var(--cherry-plank);
+      background-image:
+        linear-gradient(90deg, rgba(255,220,240,.13), transparent 25%, rgba(90,24,72,.12) 75%, transparent),
+        repeating-linear-gradient(0deg, transparent 0 52px, rgba(104,31,83,.22) 53px 55px),
+        linear-gradient(180deg, #d932b3, #c3239e);
+      border: 0;
+      color: var(--text);
+    }
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border: 2px solid rgba(255,220,240,.13);
+    }
+    .base {
+      grid-column: 1 / -1;
+      min-height: 200px;
+      background-color: var(--cherry-seam);
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0 54px, rgba(35,18,38,.18) 55px 57px),
+        linear-gradient(180deg, #65465f, #51394f);
+    }
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-rows: repeat(3, 297px) 200px;
+        gap: 30px;
+      }
+      .tile { padding: 17px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="home"><a href="index.html">Home</a></div>
+  <main class="grid" aria-label="Grid Test">
+    <div class="tile">1</div>
+    <div class="tile">2</div>
+    <div class="tile">3</div>
+    <div class="tile">4</div>
+    <div class="tile">5</div>
+    <div class="tile">6</div>
+    <div class="tile">7</div>
+    <div class="tile">8</div>
+    <div class="tile">9</div>
+    <div class="tile">10</div>
+    <div class="tile">11</div>
+    <div class="tile">12</div>
+    <div class="base" aria-hidden="true"></div>
+  </main>
+</body>
+</html>

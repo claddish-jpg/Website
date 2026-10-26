@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Logic Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --cherry-light: #f2b7c8;
+      --cherry-mid: #d887a4;
+      --cherry-dark: #9f456f;
+      --cherry-deep: #6d294f;
+      --ink: #482238;
+      --panel: #fff8fb;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--cherry-light);
+      /* Layered plank seams and grain evoke Minecraft cherry wood planks. */
+      background-image:
+        linear-gradient(90deg, transparent 0 24%, rgba(109,41,79,.20) 24% 24.35%, transparent 24.35% 74%, rgba(109,41,79,.16) 74% 74.35%, transparent 74.35%),
+        linear-gradient(0deg, transparent 0 97%, rgba(109,41,79,.24) 97% 100%),
+        repeating-linear-gradient(0deg,
+          #f5c5d2 0px, #f5c5d2 57px,
+          #d98eaa 58px, #d98eaa 60px,
+          #efb5c8 61px, #efb5c8 117px,
+          #d887a4 118px, #d887a4 120px);
+      background-size: 100% 120px;
+      background-attachment: fixed;
+    }
+    .login-box {
+      width: min(81%, 560px);
+      min-height: 458px;
+      margin-top: clamp(100px, 13.8vh, 190px);
+      padding: 74px 24px 40px;
+      background: var(--panel);
+      border: 3px solid var(--cherry-dark);
+      text-align: center;
+      box-shadow: 0 5px 0 rgba(109,41,79,.18);
+    }
+    h1 {
+      margin: 0 0 49px;
+      color: var(--cherry-deep);
+      font-size: 42px;
+      font-weight: 600;
+    }
+    form { width: min(100%, 380px); margin: 0 auto; }
+    input[type="text"], input[type="password"] {
+      display: block;
+      width: 100%;
+      height: 68px;
+      margin-bottom: 19px;
+      padding: 0 17px;
+      border: 2px solid #8d7882;
+      border-radius: 4px;
+      background: #fff;
+      font: 24px Arial, Helvetica, sans-serif;
+      color: #33212b;
+      outline-color: var(--cherry-dark);
+    }
+    input::placeholder { color: #888; opacity: 1; }
+    .buttons { display: flex; justify-content: center; gap: 6px; margin-top: -10px; }
+    button {
+      border: 2px solid var(--cherry-deep);
+      background: var(--cherry-dark);
+      color: white;
+      padding: 8px 17px;
+      font-size: 23px;
+      cursor: pointer;
+    }
+    button:hover { background: var(--cherry-deep); }
+    .home { margin-top: 190px; margin-bottom: 40px; font-size: 28px; }
+    .home a { color: var(--cherry-deep); }
+    @media (max-width: 480px) {
+      .login-box { width: 81%; min-height: 0; padding: 74px 20px 66px; margin-top: 24vh; }
+      h1 { font-size: 42px; margin-bottom: 49px; }
+      input[type="text"], input[type="password"] { height: 68px; font-size: 23px; }
+      button { font-size: 23px; padding: 8px 17px; }
+      .home { margin-top: 190px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="login-box">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <input type="text" name="username" placeholder="Username" aria-label="Username">
+      <input type="password" name="password" placeholder="Password" aria-label="Password">
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </main>
+  <div class="home"><a href="index.html">Home</a></div>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      alert("wallahi");
+    });
+  </script>
+</body>
+</html>
