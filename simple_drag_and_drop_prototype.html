@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Drag and Drop Prototype</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #000;
+      color: #fff;
+      font-family: "Courier New", monospace;
+    }
+    h1 { text-align: center; font-size: 2rem; }
+    .container {
+      max-width: 800px;
+      margin: 24px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .panel {
+      border: 2px solid #fff;
+      padding: 16px;
+      min-height: 250px;
+    }
+    h2 { margin-top: 0; font-size: 1.1rem; }
+    .items { display: flex; flex-wrap: wrap; gap: 10px; min-height: 100px; }
+    .item {
+      padding: 10px 14px;
+      background: #fff;
+      color: #000;
+      border: 2px solid #fff;
+      cursor: grab;
+      user-select: none;
+      font-weight: bold;
+    }
+    .drop-zone {
+      min-height: 150px;
+      padding: 12px;
+      border: 2px dashed #888;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 10px;
+    }
+    .drop-zone.over { border-color: #ffff00; }
+    @media (max-width: 600px) {
+      body { padding: 12px; }
+      .container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>DRAG AND DROP</h1>
+
+  <main class="container">
+    <section class="panel">
+      <h2>DRAGGABLE ITEMS</h2>
+      <div class="items">
+        <div class="item" draggable="true">Item 1</div>
+        <div class="item" draggable="true">Item 2</div>
+        <div class="item" draggable="true">Item 3</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>DROP AREA</h2>
+      <div class="drop-zone"></div>
+    </section>
+  </main>
+
+  <script>
+    const items = document.querySelectorAll(".item");
+    const dropZone = document.querySelector(".drop-zone");
+
+    items.forEach(item => {
+      item.addEventListener("dragstart", event => {
+        event.dataTransfer.setData("text/plain", item.textContent);
+        event.dataTransfer.setData("text/html", item.outerHTML);
+        event.dataTransfer.effectAllowed = "move";
+      });
+    });
+
+    dropZone.addEventListener("dragover", event => {
+      event.preventDefault();
+      dropZone.classList.add("over");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("over");
+    });
+
+    dropZone.addEventListener("drop", event => {
+      event.preventDefault();
+      dropZone.classList.remove("over");
+      const itemText = event.dataTransfer.getData("text/plain");
+      const item = [...items].find(element => element.textContent === itemText);
+      if (item) dropZone.appendChild(item);
+    });
+  </script>
+</body>
+</html>
