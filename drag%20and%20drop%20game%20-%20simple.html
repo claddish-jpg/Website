@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOUL QUEST | Undertale Word Match</title>
+<style>
+:root {
+  --bg: #000000;
+  --panel: #000000;
+  --panel2: #111111;
+  --text: #ffffff;
+  --muted: #d0d0d0;
+  --accent: #ffffff;
+  --border: #ffffff;
+  --good: #ffffff;
+  --bad: #ff5555;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: "Courier New", monospace;
+  min-height: 100vh;
+}
+button { font: inherit; }
+.shell { max-width: 900px; margin: 0 auto; padding: 18px 14px 28px; }
+.topline { display: none; }
+.hero { text-align: center; margin: 8px auto 20px; max-width: 700px; }
+.kicker { display: none; }
+h1 { font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.1; margin: 8px 0 18px; letter-spacing: .03em; }
+h1 span { color: #ffff00; }
+.subtitle { display: none; }
+.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin: 18px 0; }
+.stat { background: #000; border: 2px solid #fff; border-radius: 0; padding: 10px 6px; text-align: center; }
+.stat small { display: block; color: #fff; text-transform: uppercase; font-size: .68rem; letter-spacing: .08em; }
+.stat strong { display: block; margin-top: 5px; font-size: 1.2rem; }
+.layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 12px; align-items: start; }
+.panel { background: #000; border: 2px solid #fff; border-radius: 0; padding: 14px; box-shadow: none; }
+.panel h2 { margin: 0 0 6px; font-size: 1rem; font-weight: 700; }
+.help { color: #ddd; font-size: .86rem; line-height: 1.45; margin: 0 0 14px; }
+.wordbank { display: flex; flex-wrap: wrap; gap: 8px; min-height: 72px; align-content: flex-start; }
+.word {
+  color: #000; background: #fff; border: 2px solid #fff; border-radius: 0;
+  padding: 8px 10px; font-weight: 800; cursor: grab; user-select: none; touch-action: manipulation;
+  box-shadow: none;
+}
+.word:hover { background: #ffff00; }
+.word:focus-visible, .drop:focus-visible, button:focus-visible { outline: 2px solid #ffff00; outline-offset: 2px; }
+.word.selected { outline: 2px solid #ffff00; outline-offset: 2px; }
+.word.placed { display: none; }
+.soul-key { display: grid; gap: 8px; }
+.drop {
+  display: grid; grid-template-columns: 30px 1fr; gap: 8px; align-items: center; min-height: 72px;
+  border: 1px solid #888; background: #000; border-radius: 0; padding: 9px;
+}
+.drop.dragover { border-color: #ffff00; }
+.drop.correct { border: 2px solid #fff; background: #101010; }
+.drop.incorrect { border: 2px solid #ff5555; background: #160000; }
+.soul-icon { width: 28px; height: 28px; display: grid; place-items: center; font-size: 1.1rem; }
+.trait { font-weight: 850; font-size: .9rem; }
+.definition { color: #ddd; font-size: .8rem; line-height: 1.35; margin-top: 3px; }
+.slot { display: block; color: #aaa; font-size: .72rem; margin-top: 5px; }
+.drop.correct .slot { color: #fff; font-weight: 800; }
+.drop.incorrect .slot { color: #ff7777; font-weight: 800; }
+.feedback { min-height: 48px; padding: 10px; margin-top: 12px; background: #000; border: 1px solid #fff; border-radius: 0; color: #fff; line-height: 1.4; font-size: .86rem; }
+.feedback.good { border-color: #fff; color: #fff; }
+.feedback.bad { border-color: #ff5555; color: #ff7777; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.action { border: 2px solid #fff; background: #000; color: #fff; border-radius: 0; padding: 9px 12px; cursor: pointer; font-weight: 750; }
+.action.primary { background: #fff; color: #000; border-color: #fff; }
+.action:hover { background: #ffff00; color: #000; border-color: #ffff00; }
+.win { display: none; margin-top: 14px; border: 2px solid #fff; background: #000; padding: 16px; border-radius: 0; text-align: center; }
+.win.show { display: block; }
+.win .heart { color: #ff0000; font-size: 1.8rem; }
+.win h2 { color: #ffff00; font-size: 1.25rem; margin: 6px 0; }
+.win p { color: #fff; margin: 0; line-height: 1.5; }
+.note { display: none; }
+@media(max-width:760px) {
+  .layout { grid-template-columns: 1fr; }
+  .shell { padding: 14px 10px 24px; }
+  .panel { padding: 12px; }
+  .wordbank { min-height: 64px; }
+  .drop { min-height: 68px; }
+}
+</style>
+</head>
+<body>
+<main class="shell">
+<div class="tag">A WORD-MATCH PUZZLE</div>
+  </div>
+  <header class="hero">
+<h1>DRAG AND DROP</h1>
+</header>
+  <section class="stats" aria-label="Game status">
+    <div class="stat"><small>Correct</small><strong id="score">0 / 10</strong></div>
+    <div class="stat"><small>Progress</small><strong id="progress">0%</strong></div>
+    <div class="stat"><small>Attempts</small><strong id="attempts">0</strong></div>
+  </section>
+  <div class="layout">
+    <section class="panel">
+      <h2>WORDS</h2>
+<div class="wordbank" id="wordbank" aria-label="Words to match"></div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite">Choose a word.</div>
+      <div class="actions">
+        <button class="action primary" id="checkBtn" type="button">Check answers</button>
+        <button class="action" id="resetBtn" type="button">Restart</button>
+      </div>
+      <div class="win" id="win" role="status">
+        <div class="heart" aria-hidden="true">♥</div>
+        <h2>You are filled with DETERMINATION.</h2>
+        <p>All answers are correct.</p>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>SOULS</h2>
+<div class="soul-key" id="soulKey"></div>
+    </section>
+  </div>
+</main>
+<script>
+const entries = [
+  { word:"Determination", trait:"Determination", icon:"❤️", definition:"The resolve to keep going, even when the odds feel impossible.", group:"Human soul trait" },
+  { word:"Bravery", trait:"Bravery", icon:"🧡", definition:"The courage to face danger or act despite fear.", group:"Human soul trait" },
+  { word:"Justice", trait:"Justice", icon:"💛", definition:"A commitment to fairness and doing what is right.", group:"Human soul trait" },
+  { word:"Kindness", trait:"Kindness", icon:"💚", definition:"Showing care, compassion, and generosity toward others.", group:"Human soul trait" },
+  { word:"Patience", trait:"Patience", icon:"💙", definition:"The ability to wait calmly without becoming frustrated.", group:"Human soul trait" },
+  { word:"Integrity", trait:"Integrity", icon:"💜", definition:"Being honest and staying true to your principles.", group:"Human soul trait" },
+  { word:"Perseverance", trait:"Perseverance", icon:"💙", definition:"Continuing to work toward a goal despite setbacks.", group:"Human soul trait" },
+  { word:"Resilience", trait:"Resilience", icon:"✦", definition:"The ability to recover and adapt after a difficult experience.", group:"Bonus vocabulary" },
+  { word:"Courageous", trait:"Courageous", icon:"⚔️", definition:"Willing to do something difficult or risky; brave.", group:"Bonus vocabulary" },
+  { word:"Compassion", trait:"Compassion", icon:"☼", definition:"Concern for another person's suffering and a wish to help.", group:"Bonus vocabulary" }
+];
+// Shuffle the word bank so it does not follow the answer order.
+let shuffled = [...entries].sort(() => Math.random() - 0.5);
+let placed = {};
+let selectedWord = null;
+let attempts = 0;
+const wordbank = document.getElementById("wordbank");
+const soulKey = document.getElementById("soulKey");
+const feedback = document.getElementById("feedback");
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+function renderWords() {
+  wordbank.innerHTML = "";
+  shuffled.forEach(item => {
+    const el = document.createElement("button");
+    el.type = "button";
+    el.className = "word";
+    el.textContent = item.word;
+    el.draggable = true;
+    el.dataset.word = item.word;
+    el.setAttribute("aria-label", "Select or drag " + item.word);
+    if (Object.values(placed).includes(item.word)) el.classList.add("placed");
+    el.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", item.word);
+      selectedWord = item.word;
+    });
+    el.addEventListener("click", () => {
+      if (Object.values(placed).includes(item.word)) return;
+      document.querySelectorAll(".word").forEach(w => w.classList.remove("selected"));
+      selectedWord = item.word;
+      el.classList.add("selected");
+      feedback.className = "feedback";
+      feedback.textContent = item.word + " selected. Now tap its matching definition.";
+    });
+    wordbank.appendChild(el);
+  });
+}
+function renderTargets() {
+  soulKey.innerHTML = "";
+  entries.forEach((item, index) => {
+    const target = document.createElement("div");
+    target.className = "drop";
+    target.tabIndex = 0;
+    target.dataset.answer = item.word;
+    target.setAttribute("role", "button");
+    target.setAttribute("aria-label", "Definition " + (index + 1) + ": " + item.definition);
+    target.innerHTML = `<div class="soul-icon" aria-hidden="true">${item.icon}</div><div><div class="trait">${item.group === "Human soul trait" ? "Human soul trait" : "Bonus vocabulary"}</div><div class="definition">${item.definition}</div><span class="slot">${item.group} · Drop a word here</span></div>`;
+    target.addEventListener("dragover", e => { e.preventDefault(); target.classList.add("dragover"); });
+    target.addEventListener("dragleave", () => target.classList.remove("dragover"));
+    target.addEventListener("drop", e => {
+      e.preventDefault(); target.classList.remove("dragover");
+      const word = e.dataTransfer.getData("text/plain");
+      if (word) placeWord(word, item.word, target);
+    });
+    target.addEventListener("click", () => {
+      if (selectedWord) placeWord(selectedWord, item.word, target);
+    });
+    target.addEventListener("keydown", e => {
+      if ((e.key === "Enter" || e.key === " ") && selectedWord) { e.preventDefault(); placeWord(selectedWord, item.word, target); }
+    });
+    soulKey.appendChild(target);
+  });
+}
+function placeWord(word, answer, target) {
+  if (!word || Object.values(placed).includes(word)) return;
+  attempts++;
+  document.getElementById("attempts").textContent = attempts;
+  const previousWord = placed[answer];
+  if (previousWord) delete placed[answer];
+  // A wrong match is not locked in: show an error and let the player try again.
+  if (word !== answer) {
+    target.classList.remove("correct");
+    target.classList.add("incorrect");
+    target.querySelector(".slot").textContent = `✖ Not quite — "${word}" doesn't match this definition. Try again!`;
+    feedback.className = "feedback bad";
+    feedback.textContent = `Incorrect match. "${word}" does not fit this definition. No point awarded — try another word.`;
+    setTimeout(() => {
+      target.classList.remove("incorrect");
+      if (!placed[answer]) target.querySelector(".slot").textContent = `${entries.find(x => x.word === answer).group} · Drop a word here`;
+    }, 1400);
+    selectedWord = null;
+    document.querySelectorAll(".word").forEach(w => w.classList.remove("selected"));
+    return;
+  }
+  // If a target had an earlier answer, put it back in the word bank.
+  if (previousWord) placed[answer] = previousWord;
+  placed[answer] = word;
+  target.classList.remove("incorrect");
+  target.classList.add("correct");
+  target.querySelector(".slot").textContent = `✓ Correct: ${word} · +1 point`;
+  feedback.className = "feedback good";
+  feedback.textContent = `Correct! ${word} belongs here. You earned 1 point.`;
+  selectedWord = null;
+  renderWords();
+  updateStats();
+}
+function updateStats() {
+  const score = Object.keys(placed).filter(key => placed[key] === key).length;
+  document.getElementById("score").textContent = `${score} / 10`;
+  document.getElementById("progress").textContent = `${score * 10}%`;
+  if (score === 10) {
+    document.getElementById("win").classList.add("show");
+    feedback.className = "feedback good";
+    feedback.textContent = "Perfect match! The entire soul archive has been restored.";
+  } else {
+    document.getElementById("win").classList.remove("show");
+  }
+}
+document.getElementById("checkBtn").addEventListener("click", () => {
+  const score = Object.keys(placed).filter(key => placed[key] === key).length;
+  if (score === 10) {
+    document.getElementById("win").classList.add("show");
+    feedback.className = "feedback good";
+    feedback.textContent = "All ten matches are correct. The power of determination shines within you!";
+  } else {
+    feedback.className = "feedback";
+    feedback.textContent = `${score} of 10 correct. Keep matching the remaining words — you're not out of SAVE points yet.`;
+  }
+});
+document.getElementById("resetBtn").addEventListener("click", () => {
+  placed = {};
+  selectedWord = null;
+  attempts = 0;
+  shuffled = shuffle([...entries]);
+  document.getElementById("attempts").textContent = "0";
+  document.getElementById("win").classList.remove("show");
+  feedback.className = "feedback";
+  feedback.textContent = "Restarted. Try again.";
+  renderWords();
+  renderTargets();
+  updateStats();
+});
+shuffled = shuffle(shuffled);
+renderWords();
+renderTargets();
+updateStats();
+</script>
+</body>
+</html>
