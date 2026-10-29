@@ -9,7 +9,7 @@
     <title>SOUL QUEST | Word Match</title>
 
     <style>
-        /* 1. BASIC PAGE DESIGN */
+        /* 1. basic page design */
 
         * {
             box-sizing: border-box;
@@ -37,7 +37,7 @@
             font-size: 36px;
         }
 
-        /* 2. GAME STATISTICS */
+        /* 2. to show yung statistics */
 
         .stats {
             display: flex;
@@ -59,7 +59,7 @@
             font-size: 22px;
         }
 
-        /* 3. MAIN GAME LAYOUT */
+        /* 3. main game layoutt */
 
         .game {
             display: grid;
@@ -73,7 +73,7 @@
             border: 2px solid white;
         }
 
-        /* 4. WORD BANK */
+        /* 4. work banks */
 
         #wordBank {
             display: flex;
@@ -116,7 +116,7 @@
             display: none;
         }
 
-        /* 5. DEFINITION DROP ZONES */
+        /* 5. drop zone*/
 
         .definition {
             margin-bottom: 12px;
@@ -150,7 +150,7 @@
             color: #cccccc;
         }
 
-        /* 6. BUTTONS */
+        /* 6. buttons */
 
         button {
             font-family: inherit;
@@ -190,7 +190,7 @@
             outline-offset: 3px;
         }
 
-        /* 7. FEEDBACK AND WIN MESSAGE */
+        /* 7. PANG FEEDBACK NG MGA MESSAGEEEE */
 
         #feedback {
             min-height: 50px;
@@ -273,23 +273,115 @@
                 padding: 12px;
             }
         }
+
+        /* 10. Back to the landing page */
+
+        .back-nav {
+                margin-bottom: 25px;
+                text-align: left;
+}
+
+        .back-button {
+                display: inline-block;
+                padding: 10px 16px;
+                border: 2px solid white;
+                background: black;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                transition: 0.2s;
+}
+
+        .back-button:link,
+        .back-button:visited {
+                color: white;
+}
+
+        .back-button:hover {
+                background: white;
+                color: black;
+}
+
+        .back-button:active {
+                background: yellow;
+                color: black;
+}
+
+        .back-button:focus-visible {
+                outline: 2px solid yellow;
+                outline-offset: 4px;
+}
+        /* AGE RECOMMENDATION */
+        .age-bracket {
+                border: 2px solid white;
+                background: black;
+                 color: white;
+                padding: 16px;
+                margin: 20px auto;
+                max-width: 420px;
+                text-align: center;
+}
+
+        .age-label {
+                display: block;
+                font-size: 12px;
+                letter-spacing: 3px;
+                margin-bottom: 8px;
+}        
+
+        .age-number {
+                display: inline-block;
+                border: 2px solid white;
+                padding: 8px 18px;
+                font-size: 28px;
+                font-weight: bold;
+}
+
+        .age-bracket p {
+                margin: 12px 0 0;
+}
+
+        .age-note {
+                font-size: 13px;
+                color: #cccccc;
+                line-height: 1.5;
+}
+        
     </style>
 </head>
 
 <body>
 
+    <!-- pang back to landing page -->
+
+<nav class="back-nav">
+    <a href="index.html" class="back-button">
+        &larr; Back to Landing Page
+    </a>
+</nav>
     <main class="container">
 
-        <!-- PAGE TITLE -->
+        <!-- title ng page -->
 
         <header>
-            <h1>SOUL QUEST</h1>
+            <h1>SOUL QUEST! :D</h1>
             <p style="text-align: center;">
                 Match each word with its correct definition.
             </p>
         </header>
 
-        <!-- GAME STATISTICS -->
+        <!-- age bracket -->
+        <section class="age-bracket">
+            <span class="age-label">RECOMMENDED AGE</span>
+        <span class="age-number">10+</span>
+            <p>Suitable for players aged 10 and above.</p>
+            <p class="age-note">
+            A simple word-matching game for players who enjoy
+            vocabulary, reading, and logical thinking.
+            </p>
+        </section>
+
+        <!-- statistics of the game -->
 
         <section class="stats">
             <div class="stat">
@@ -308,11 +400,11 @@
             </div>
         </section>
 
-        <!-- MAIN GAME -->
+        <!-- main game -->
 
         <div class="game">
 
-            <!-- WORD BANK -->
+            <!-- word banks again -->
 
             <section class="panel">
                 <h2>WORDS</h2>
@@ -339,7 +431,7 @@
                 </div>
             </section>
 
-            <!-- DEFINITIONS -->
+            <!-- definitions -->
 
             <section class="panel">
                 <h2>SOULS</h2>
@@ -349,7 +441,7 @@
 
         </div>
 
-        <!-- INSTRUCTIONS AND LINK PSEUDO-CLASSES -->
+        <!-- INSTRUCTIONS AND THE LINK TO PSUEDO CLASSES (MOST IMPORTANT PART) -->
 
         <p style="text-align: center; margin-top: 25px;">
             <a href="#instructions">How to play</a>
@@ -367,7 +459,7 @@
     </main>
 
     <script>
-        // 1. GAME DATA
+        // 1. data of the game
 
         const entries = [
             {
@@ -412,7 +504,7 @@
             }
         ];
 
-        // 2. GAME VARIABLES
+        // 2. variables
 
         let selectedWord = null;
         let attempts = 0;
@@ -439,7 +531,7 @@
             return array;
         }
 
-        // 5. DISPLAY THE WORDS
+        // 5. to display the words
 
         function renderWords() {
             wordBank.innerHTML = "";
@@ -486,7 +578,7 @@
             });
         }
 
-        // 6. DISPLAY THE DEFINITIONS
+        // 6. definition of each words
 
         function renderDefinitions() {
             definitions.innerHTML = "";
@@ -579,7 +671,7 @@
             updateStats();
         }
 
-        // 8. UPDATE THE SCORE AND PROGRESS
+        // 8. scoreboard updates to check 
 
         function updateStats() {
             document.getElementById("score").textContent =
@@ -595,7 +687,7 @@
             }
         }
 
-        // 9. CHECK ANSWERS BUTTON
+        // 9. to check your answers
 
         document.getElementById("checkButton").addEventListener("click", () => {
             feedback.className = "";
@@ -608,7 +700,7 @@
             }
         });
 
-        // 10. RESTART BUTTON
+        // 10. restart button
 
         document.getElementById("resetButton").addEventListener("click", () => {
             score = 0;
@@ -628,7 +720,7 @@
             updateStats();
         });
 
-        // 11. START THE GAME
+        // 11. tos tart the game
 
         shuffledWords = shuffle(shuffledWords);
 
