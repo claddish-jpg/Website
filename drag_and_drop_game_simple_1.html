@@ -108,7 +108,7 @@ h1 span { color: #ffff00; }
         <button class="action" id="resetBtn" type="button">Restart</button>
       </div>
       <div class="win" id="win" role="status">
-        <div class="heart" aria-hidden="true">♥</div>
+        <div class="heart" aria-hidden="true"><3</div>
         <h2>You are filled with DETERMINATION.</h2>
         <p>All answers are correct.</p>
       </div>
@@ -121,16 +121,16 @@ h1 span { color: #ffff00; }
 </main>
 <script>
 const entries = [
-  { word:"Determination", trait:"Determination", icon:"❤️", definition:"The resolve to keep going, even when the odds feel impossible.", group:"Human soul trait" },
-  { word:"Bravery", trait:"Bravery", icon:"🧡", definition:"The courage to face danger or act despite fear.", group:"Human soul trait" },
-  { word:"Justice", trait:"Justice", icon:"💛", definition:"A commitment to fairness and doing what is right.", group:"Human soul trait" },
-  { word:"Kindness", trait:"Kindness", icon:"💚", definition:"Showing care, compassion, and generosity toward others.", group:"Human soul trait" },
-  { word:"Patience", trait:"Patience", icon:"💙", definition:"The ability to wait calmly without becoming frustrated.", group:"Human soul trait" },
-  { word:"Integrity", trait:"Integrity", icon:"💜", definition:"Being honest and staying true to your principles.", group:"Human soul trait" },
-  { word:"Perseverance", trait:"Perseverance", icon:"💙", definition:"Continuing to work toward a goal despite setbacks.", group:"Human soul trait" },
-  { word:"Resilience", trait:"Resilience", icon:"✦", definition:"The ability to recover and adapt after a difficult experience.", group:"Bonus vocabulary" },
-  { word:"Courageous", trait:"Courageous", icon:"⚔️", definition:"Willing to do something difficult or risky; brave.", group:"Bonus vocabulary" },
-  { word:"Compassion", trait:"Compassion", icon:"☼", definition:"Concern for another person's suffering and a wish to help.", group:"Bonus vocabulary" }
+  { word:"Determination", trait:"Determination", definition:"The resolve to keep going, even when the odds feel impossible.", group:"Human soul trait" },
+  { word:"Bravery", trait:"Bravery", definition:"The courage to face danger or act despite fear.", group:"Human soul trait" },
+  { word:"Justice", trait:"Justice", definition:"A commitment to fairness and doing what is right.", group:"Human soul trait" },
+  { word:"Kindness", trait:"Kindness", definition:"Showing care, compassion, and generosity toward others.", group:"Human soul trait" },
+  { word:"Patience", trait:"Patience", definition:"The ability to wait calmly without becoming frustrated.", group:"Human soul trait" },
+  { word:"Integrity", trait:"Integrity", definition:"Being honest and staying true to your principles.", group:"Human soul trait" },
+  { word:"Perseverance", trait:"Perseverance", definition:"Continuing to work toward a goal despite setbacks.", group:"Human soul trait" },
+  { word:"Resilience", trait:"Resilience", definition:"The ability to recover and adapt after a difficult experience.", group:"Bonus vocabulary" },
+  { word:"Courageous", trait:"Courageous", definition:"Willing to do something difficult or risky; brave.", group:"Bonus vocabulary" },
+  { word:"Compassion", trait:"Compassion", definition:"Concern for another person's suffering and a wish to help.", group:"Bonus vocabulary" }
 ];
 // Shuffle the word bank so it does not follow the answer order.
 let shuffled = [...entries].sort(() => Math.random() - 0.5);
