@@ -4,496 +4,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Railey Vale A. Salugao | Portfolio (not made with ai)</title>
-
+<title>Railey Vale A. Salugao | Portfolio</title>
 <style>
 :root {
-    --bg: #101827;
-    --panel: #182337;
-    --panel2: #202e44;
-    --text: #edf3fa;
-    --muted: #aab8ca;
-    --accent: #63e6d4;
-    --purple: #b7a0ff;
-    --line: #304057;
+    --red: #d9a0ad;
+    --red-active: #e8b5c0;
+    --red-dark: #a66f7c;
+    --cream: #f8edf0;
+    --pink: #f4e1e6;
+    --text: #684b52;
+    --muted: #8a737a;
 }
-
-* {
-    box-sizing: border-box;
-}
-
+* { box-sizing: border-box; }
+html { min-height: 100%; }
 body {
     margin: 0;
-    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
     color: var(--text);
     font-family: Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
 }
-
 header {
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    padding: 16px 24px;
+    background: var(--red);
+    width: 100%;
 }
-
 .nav-wrap {
-    max-width: 1180px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 8px;
 }
-
 nav {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 8px;
+    align-items: stretch;
     flex-wrap: wrap;
 }
-
 .nav-selector {
-    font-size: 15px;
-    color: var(--muted);
+    border: 0;
+    border-radius: 0;
+    padding: 17px 22px;
+    min-height: 58px;
+    color: #fffafc;
     background: transparent;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 14px;
+    font: inherit;
+    font-size: 16px;
     cursor: pointer;
 }
-
 .nav-selector:hover,
 .nav-selector.active {
-    color: var(--accent);
-    background: var(--panel2);
+    background: var(--red-active);
+    box-shadow: inset 0 -5px 0 #f8e7eb;
 }
-
 main {
-    max-width: 1180px;
-    min-height: 70vh;
-    margin: auto;
-    padding: 40px 24px;
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 65vh;
+    margin: 0 auto;
+    padding: 38px 20px 56px;
 }
-
-.page-section {
-    display: none;
-}
-
-.page-section.active {
-    display: block;
-}
-
+.page-section { display: none; }
+.page-section.active { display: block; }
 .hero {
-    padding: 60px 0;
-    min-height: 380px;
+    min-height: 360px;
+    padding: 45px 12px;
+    text-align: center;
 }
-
-.kicker,
-.index {
-    color: var(--accent);
+.kicker, .index {
+    color: var(--red-dark);
     font-size: 13px;
     font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }
-
 h1 {
-    font-size: clamp(34px, 6vw, 60px);
-    line-height: 1.15;
-    margin: 12px 0 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.2;
+    margin: 12px 0 16px;
+    color: var(--red-dark);
 }
-
-h1 span {
-    color: var(--accent);
-}
-
-h2,
-h3 {
-    margin-top: 0;
-}
-
+h1 span { color: var(--red-active); }
+h2, h3 { margin-top: 0; }
 .page-intro {
-    max-width: 700px;
+    max-width: 650px;
+    margin: 0 auto;
     color: var(--muted);
-    font-size: 17px;
+    font-size: 16px;
 }
-
 .actions {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 28px;
+    margin-top: 24px;
 }
-
 .btn {
     display: inline-block;
-    padding: 11px 18px;
-    border-radius: 8px;
-    border: 1px solid var(--line);
+    padding: 10px 18px;
+    border: 2px solid var(--red);
+    border-radius: 6px;
     font-size: 15px;
     text-decoration: none;
     cursor: pointer;
 }
-
-.btn.primary {
-    color: var(--bg);
-    background: var(--accent);
-    border-color: var(--accent);
-}
-
-.btn.secondary {
-    color: var(--text);
-    background: var(--panel);
-}
-
+.btn.primary { color: #fffafc; background: var(--red); }
+.btn.secondary { color: var(--red-dark); background: var(--pink); }
+.btn:hover { background: var(--red-active); color: #fffafc; }
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
     margin-top: 28px;
 }
-
 .project {
-    padding: 22px;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+    background: var(--pink);
+    border: 2px solid var(--red);
+    border-radius: 6px;
 }
-
 .project-top {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 18px;
-    font-size: 12px;
-}
-
-.num {
-    color: var(--accent);
-}
-
-.type {
-    color: var(--purple);
-}
-
-.project h3 {
-    font-size: 20px;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 10px;
+    font-size: 11px;
 }
-
+.num { color: var(--red-dark); font-weight: bold; }
+.type { color: var(--muted); }
+.project h3 {
+    color: var(--red-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    margin: 0 0 8px;
+}
 .project p {
     color: var(--muted);
     font-size: 14px;
-    min-height: 45px;
+    margin: 0;
+    min-height: 42px;
 }
-
 .project a {
     display: inline-block;
     margin-top: 12px;
-    color: var(--accent);
+    color: var(--red-dark);
+    font-weight: bold;
     text-decoration: none;
 }
-
-.project a:hover {
-    text-decoration: underline;
+.project a:hover { text-decoration: underline; }
+footer { width: 100%; }
+.footer-main {
+    background: var(--pink);
+    padding: 34px 7%;
 }
-
-footer {
-    border-top: 1px solid var(--line);
-    text-align: center;
-    padding: 22px;
+.footer-content {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 35px;
+    align-items: start;
+}
+.footer-main h2 {
+    margin: 0 0 12px;
+    color: #76565f;
+    font-size: 26px;
+    font-weight: normal;
+}
+.footer-main p {
+    max-width: 440px;
+    margin: 0;
     color: var(--muted);
+}
+.follow { text-align: center; }
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 18px;
+}
+.socials a {
+    color: var(--red-dark);
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+}
+.footer-bottom {
+    padding: 18px 12px;
+    background: var(--red);
+    color: #fff7f9;
+    text-align: center;
     font-size: 14px;
 }
-
 @media (max-width: 600px) {
-    header {
-        padding: 12px;
-    }
-
-    nav {
-        gap: 2px;
-    }
-
+    .nav-wrap { padding: 0 4px; }
     .nav-selector {
-        padding: 8px 10px;
+        min-height: 48px;
+        padding: 12px 13px;
         font-size: 14px;
     }
-
-    main {
-        padding: 24px 16px;
-    }
-
-    .hero {
-        padding: 35px 0;
-    }
+    main { padding: 24px 12px 42px; }
+    .hero { min-height: 340px; padding: 35px 4px; }
+    .projects { gap: 12px; }
+    .project { padding: 14px 9px; }
+    .project-top { flex-direction: column; gap: 2px; }
+    .project h3 { font-size: 16px; }
+    .project p { font-size: 13px; }
+    .footer-main { padding: 28px 22px; }
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .footer-main h2 { font-size: 21px; }
+    .footer-main p { font-size: 14px; line-height: 1.35; }
+    .socials { gap: 18px; }
+}
+@media (max-width: 380px) {
+    .nav-selector { padding: 10px 9px; font-size: 13px; }
+    .footer-content { grid-template-columns: 1fr; }
+    .follow { text-align: left; }
+    .socials { justify-content: flex-start; }
 }
 </style>
 </head>
-
 <body>
-
 <header>
     <div class="nav-wrap">
         <nav aria-label="Main navigation">
-            <button class="nav-selector active" type="button"
-                data-section="home">Home</button>
-
-            <button class="nav-selector" type="button"
-                data-section="about">About</button>
-
-            <button class="nav-selector" type="button"
-                data-section="gallery">Gallery</button>
-
-            <button class="nav-selector" type="button"
-                data-section="portfolio">Portfolio</button>
-
-            <button class="nav-selector" type="button"
-                data-section="skills">Skills</button>
-
-            <button class="nav-selector" type="button"
-                data-section="contact">Contact</button>
+            <button class="nav-selector active" type="button" data-section="home">Home</button>
+            <button class="nav-selector" type="button" data-section="about">About</button>
+            <button class="nav-selector" type="button" data-section="gallery">Gallery</button>
+            <button class="nav-selector" type="button" data-section="portfolio">Portfolio</button>
+            <button class="nav-selector" type="button" data-section="skills">Skills</button>
+            <button class="nav-selector" type="button" data-section="contact">Contact</button>
         </nav>
     </div>
 </header>
 
 <main>
-
-    <!-- HOME: CONTENT KEPT -->
     <section id="home" class="page-section active">
         <section class="hero">
-            <div class="kicker">Portfolio For HTML</div>
-
-            <h1>
-                Railey Vale A. Salugao<span>.</span>
-            </h1>
-
+            <div class="kicker">PORTFOLIO FOR HTML</div>
+            <h1>Railey Vale A. Salugao<span>.</span></h1>
             <p class="page-intro">
-                Welcome to my portfolio. Explore my background,
-                gallery, skills, and web development activities in HTML, CSS, and JAVASCRIPT.
-                (this is not made with ai, nor is ai referenced, pure made by hand).
+                Welcome to my portfolio. Explore my background, gallery, skills,
+                and web development activities in HTML, CSS, and JavaScript.
             </p>
-
             <div class="actions">
-                <button class="btn primary" type="button"
-                    data-section="portfolio">
-                    View Projects ↗
-                </button>
-
-                <button class="btn secondary" type="button"
-                    data-section="contact">
-                    Contact
-                </button>
+                <button class="btn primary" type="button" data-section="portfolio">View Projects ↗</button>
+                <button class="btn secondary" type="button" data-section="contact">Contact</button>
             </div>
         </section>
     </section>
 
-    <!-- ABOUT: COMPLETELY EMPTY JUST TEMPORARILY XDD -->
     <section id="about" class="page-section"></section>
-
-    <!-- GALLERY: COMPLETELY EMPTY FOR A WHILE -->
     <section id="gallery" class="page-section"></section>
 
-    <!-- PORTFOLIO: ALL PROJECTS ARE HERE -->
     <section id="portfolio" class="page-section">
         <div class="index">PORTFOLIO OF PROJECTS</div>
-
         <h1>My Programming Projects<span>.</span></h1>
-
-        <p class="page-intro">
-            My web development activities and projects.
-        </p>
+        <p class="page-intro" style="margin-left:0">My web development activities and projects.</p>
 
         <div class="projects">
-
             <article class="project">
-                <div class="project-top">
-                    <span class="num">PROJECT_01</span>
-                    <span class="type">HTML</span>
-                </div>
-
+                <div class="project-top"><span class="num">PROJECT_01</span><span class="type">HTML</span></div>
                 <h3>Text Inputs</h3>
-                <p>
-                    HTML activity demonstrating text input fields
-                    and common input types.
-                </p>
+                <p>HTML activity demonstrating text input fields and common input types.</p>
                 <a href="text_inputs.html">Open project ↗</a>
             </article>
-
             <article class="project">
-                <div class="project-top">
-                    <span class="num">PROJECT_02</span>
-                    <span class="type">HTML FORMS</span>
-                </div>
-
+                <div class="project-top"><span class="num">PROJECT_02</span><span class="type">HTML FORMS</span></div>
                 <h3>Form Elements</h3>
-                <p>
-                    HTML form controls and elements.
-                </p>
+                <p>HTML form controls and elements.</p>
                 <a href="form_elements.html">Open project ↗</a>
             </article>
-
             <article class="project">
-                <div class="project-top">
-                    <span class="num">PROJECT_03</span>
-                    <span class="type">WEB UI</span>
-                </div>
-
+                <div class="project-top"><span class="num">PROJECT_03</span><span class="type">WEB UI</span></div>
                 <h3>TechNova Employee Portal</h3>
-                <p>
-                    A sample employee portal login interface
-                    built with HTML and CSS.
-                </p>
-                <a href="technova_employee_portal_login.html">
-                    Open project ↗
-                </a>
+                <p>A sample employee portal login interface built with HTML and CSS.</p>
+                <a href="technova_employee_portal_login.html">Open project ↗</a>
             </article>
-
             <article class="project">
-                <div class="project-top">
-                    <span class="num">PROJECT_04</span>
-                    <span class="type">JAVASCRIPT</span>
-                </div>
-
+                <div class="project-top"><span class="num">PROJECT_04</span><span class="type">JAVASCRIPT</span></div>
                 <h3>Sample Calculation</h3>
-                <p>
-                    A simple calculator activity with compute
-                    and reset controls.
-                </p>
+                <p>A simple calculator activity with compute and reset controls.</p>
                 <a href="sample_calculation.html">Open project ↗</a>
             </article>
-
             <article class="project">
-                <div class="project-top">
-                    <span class="num">PROJECT_05</span>
-                    <span class="type">JAVASCRIPT</span>
-                </div>
-
+                <div class="project-top"><span class="num">PROJECT_05</span><span class="type">JAVASCRIPT</span></div>
                 <h3>Discount Calculator</h3>
-                <p>
-                    Calculates the discounted price and amount
-                    saved from a percentage.
-                </p>
-                <a href="discount_calculator_railey.html">
-                    Open project ↗
-                </a>
+                <p>Calculates the discounted price and amount saved from a percentage.</p>
+                <a href="discount_calculator_railey.html">Open project ↗</a>
             </article>
-
             <article class="project">
-                <div class="project-top">
-                    <span class="num">PROJECT_06</span>
-                    <span class="type">PROFILE PAGE</span>
-                </div>
-
+                <div class="project-top"><span class="num">PROJECT_06</span><span class="type">PROFILE PAGE</span></div>
                 <h3>.NET Developer Profile</h3>
-                <p>
-                    Personal developer profile 
-                </p>
-                <a href="NET_developer_profile.html">
-                    Open project ↗
-                </a>
+                <p>Personal developer profile.</p>
+                <a href="NET_developer_profile.html">Open project ↗</a>
             </article>
-
-           <article class="project">
-               <div class="project-top">
-                    <span class="num">PROJECT_07</span>
-                    <span class="type">CLASS SCHEDULE OF COOPER</span>
-               </div>
-               
-               
-    <h3>Class Schedule</h3>
-    <p>Grade 12 - Cooper class schedule for First Term S.Y. 2026–2027.</p>
-    <a href="class_schedule_grade12_cooper.html">View Class Schedule ↗</a>
-           </article>
-
             <article class="project">
-               <div class="project-top">
-                    <span class="num">PROJECT_08</span>
-                    <span class="type">STUDENT ARRAY</span>
-               </div>
-               
-               
-    <h3>Students Of Cooper</h3>
-    <p>Grade 12 - Students Of Cooper Array Tabular Data</p>
-    <a href="Students_Of_Cooper.html">View Tabular Data ↗</a>
-           </article>
-
-            
-            <article class="project">
-               <div class="project-top">
-                    <span class="num">PROJECT_09</span>
-                    <span class="type">GRIDS</span>
-               </div>
-               
-               
-    <h3>Grid Test</h3>
-    <p>Grade 12 - Grids</p>
-    <a href="grid_test.html">View Grids ↗</a>
-           </article>
-
-            
-            <article class="project">
-               <div class="project-top">
-                    <span class="num">PROJECT_10</span>
-                    <span class="type">LOGIN LOGIC</span>
-               </div>
-               
-               
-    <h3>Cooper Login Logic</h3>
-    <p>Login Inteface with submit button that interacts</p>
-    <a href="login_logic_demo.html">View Login Logic ↗</a>
-           </article>
-
-
-            <article class="project">
-               <div class="project-top">
-                    <span class="num">PROJECT_11</span>
-                    <span class="type">DRAG AND DROP API</span>
-               </div>
-                
-               
-    <h3>Drag and drop matching word PROTOTYPE</h3>
-    <p>Simplified version of the drop and drag mechanics</p>
-    <a href="simple_drag_and_drop_prototype.html">View Game API ↗</a>
+                <div class="project-top"><span class="num">PROJECT_07</span><span class="type">CLASS SCHEDULE</span></div>
+                <h3>Class Schedule</h3>
+                <p>Grade 12 - Cooper class schedule for First Term S.Y. 2026–2027.</p>
+                <a href="class_schedule_grade12_cooper.html">View Class Schedule ↗</a>
             </article>
-            
-
-
             <article class="project">
-               <div class="project-top">
-                    <span class="num">PROJECT_12</span>
-                    <span class="type">DRAG AND DROP GAME</span>
-               </div>
-                
-               
-    <h3>Drag and drop matching word</h3>
-    <p>Undertale Based Drag And Drop Game which has the feels of the undertale video game</p>
-    <a href="drag_and_drop_game_simple_1.html">View Game ↗</a>
+                <div class="project-top"><span class="num">PROJECT_08</span><span class="type">STUDENT ARRAY</span></div>
+                <h3>Students of Cooper</h3>
+                <p>Grade 12 - Students of Cooper array tabular data.</p>
+                <a href="Students_Of_Cooper.html">View Tabular Data ↗</a>
             </article>
-            
-
-
-
-
+            <article class="project">
+                <div class="project-top"><span class="num">PROJECT_09</span><span class="type">GRIDS</span></div>
+                <h3>Grid Test</h3>
+                <p>Grade 12 - Grids.</p>
+                <a href="grid_test.html">View Grids ↗</a>
+            </article>
+            <article class="project">
+                <div class="project-top"><span class="num">PROJECT_10</span><span class="type">LOGIN LOGIC</span></div>
+                <h3>Cooper Login Logic</h3>
+                <p>Login interface with a working submit button.</p>
+                <a href="login_logic_demo.html">View Login Logic ↗</a>
+            </article>
+            <article class="project">
+                <div class="project-top"><span class="num">PROJECT_11</span><span class="type">DRAG AND DROP API</span></div>
+                <h3>Drag and Drop Matching Word Prototype</h3>
+                <p>Simplified version of drag-and-drop mechanics.</p>
+                <a href="simple_drag_and_drop_prototype.html">View Game API ↗</a>
+            </article>
+            <article class="project">
+                <div class="project-top"><span class="num">PROJECT_12</span><span class="type">DRAG AND DROP GAME</span></div>
+                <h3>Drag and Drop Matching Word</h3>
+                <p>Undertale-based drag-and-drop game.</p>
+                <a href="drag_and_drop_game_simple_1.html">View Game ↗</a>
+            </article>
         </div>
     </section>
 
-    <!-- SKILLS: COMPLETELY EMPTY -->
     <section id="skills" class="page-section"></section>
-
-    <!-- CONTACT: COMPLETELY EMPTY -->
     <section id="contact" class="page-section"></section>
-
 </main>
 
 <footer>
-    Designed by Railey Vale A. Salugao
+    <div class="footer-main">
+        <div class="footer-content">
+            <div>
+                <h2>Let’s Keep in Touch!</h2>
+                <p>Thanks for stopping by my portfolio. Feel free to connect with me on social media or contact me about projects, ideas, or collaborations.</p>
+            </div>
+            <div class="follow">
+                <h2>Follow Me</h2>
+                <div class="socials">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">Designed by Railey Vale A. Salugao</div>
 </footer>
 
 <script>
 document.querySelectorAll("[data-section]").forEach(function (control) {
     control.addEventListener("click", function (event) {
         event.preventDefault();
-
         const target = control.getAttribute("data-section");
 
         document.querySelectorAll(".page-section").forEach(function (section) {
@@ -507,13 +384,9 @@ document.querySelectorAll("[data-section]").forEach(function (control) {
             );
         });
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
 </script>
-
 </body>
 </html>
