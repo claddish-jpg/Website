@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Railey Vale A. Salugao | Portfolio</title>
+
 <style>
 :root {
     --red: #d9a0ad;
@@ -15,8 +16,15 @@
     --text: #684b52;
     --muted: #8a737a;
 }
-* { box-sizing: border-box; }
-html { min-height: 100%; }
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -27,21 +35,25 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
 }
+
 header {
     background: var(--red);
     width: 100%;
 }
+
 .nav-wrap {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 8px;
 }
+
 nav {
     display: flex;
     justify-content: center;
     align-items: stretch;
     flex-wrap: wrap;
 }
+
 .nav-selector {
     border: 0;
     border-radius: 0;
@@ -53,11 +65,13 @@ nav {
     font-size: 16px;
     cursor: pointer;
 }
+
 .nav-selector:hover,
 .nav-selector.active {
     background: var(--red-active);
     box-shadow: inset 0 -5px 0 #f8e7eb;
 }
+
 main {
     flex: 1;
     width: 100%;
@@ -66,20 +80,30 @@ main {
     margin: 0 auto;
     padding: 38px 20px 56px;
 }
-.page-section { display: none; }
-.page-section.active { display: block; }
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
 .hero {
     min-height: 360px;
     padding: 45px 12px;
     text-align: center;
 }
-.kicker, .index {
+
+.kicker,
+.index {
     color: var(--red-dark);
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 1.5px;
     margin-bottom: 10px;
 }
+
 h1 {
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(30px, 5vw, 46px);
@@ -87,14 +111,23 @@ h1 {
     margin: 12px 0 16px;
     color: var(--red-dark);
 }
-h1 span { color: var(--red-active); }
-h2, h3 { margin-top: 0; }
+
+h1 span {
+    color: var(--red-active);
+}
+
+h2,
+h3 {
+    margin-top: 0;
+}
+
 .page-intro {
     max-width: 650px;
     margin: 0 auto;
     color: var(--muted);
     font-size: 16px;
 }
+
 .actions {
     display: flex;
     justify-content: center;
@@ -102,6 +135,7 @@ h2, h3 { margin-top: 0; }
     gap: 12px;
     margin-top: 24px;
 }
+
 .btn {
     display: inline-block;
     padding: 10px 18px;
@@ -111,57 +145,69 @@ h2, h3 { margin-top: 0; }
     text-decoration: none;
     cursor: pointer;
 }
-.btn.primary { color: #fffafc; background: var(--red); }
-.btn.secondary { color: var(--red-dark); background: var(--pink); }
-.btn:hover { background: var(--red-active); color: #fffafc; }
+
+.btn.primary {
+    color: #fffafc;
+    background: var(--red);
+}
+
+.btn.secondary {
+    color: var(--red-dark);
+    background: var(--pink);
+}
+
+.btn:hover {
+    background: var(--red-active);
+    color: #fffafc;
+}
+
+/* PORTFOLIO PROJECT BUTTONS */
+
 .projects {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: 18px;
     margin-top: 28px;
 }
+
 .project {
-    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    padding: 12px;
     text-align: center;
     background: var(--pink);
-    border: 2px solid var(--red);
+    border: 3px solid var(--red);
     border-radius: 6px;
-}
-.project-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    font-size: 11px;
-}
-.num { color: var(--red-dark); font-weight: bold; }
-.type { color: var(--muted); }
-.project h3 {
+    text-decoration: none;
     color: var(--red-dark);
     font-family: Georgia, "Times New Roman", serif;
     font-size: 19px;
-    margin: 0 0 8px;
-}
-.project p {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-    min-height: 42px;
-}
-.project a {
-    display: inline-block;
-    margin-top: 12px;
-    color: var(--red-dark);
     font-weight: bold;
-    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
 }
-.project a:hover { text-decoration: underline; }
-footer { width: 100%; }
+
+.project:hover {
+    background: var(--red-active);
+}
+
+.project:active {
+    transform: scale(0.98);
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+}
+
 .footer-main {
     background: var(--pink);
     padding: 34px 7%;
 }
+
 .footer-content {
     max-width: 1000px;
     margin: auto;
@@ -170,30 +216,42 @@ footer { width: 100%; }
     gap: 35px;
     align-items: start;
 }
+
 .footer-main h2 {
     margin: 0 0 12px;
     color: #76565f;
     font-size: 26px;
     font-weight: normal;
 }
+
 .footer-main p {
     max-width: 440px;
     margin: 0;
     color: var(--muted);
 }
-.follow { text-align: center; }
+
+.follow {
+    text-align: center;
+}
+
 .socials {
     display: flex;
     justify-content: center;
     gap: 28px;
     margin-top: 18px;
 }
+
 .socials a {
     color: var(--red-dark);
     text-decoration: none;
     font-size: 25px;
     font-weight: bold;
 }
+
+.socials a:hover {
+    color: var(--red-active);
+}
+
 .footer-bottom {
     padding: 18px 12px;
     background: var(--red);
@@ -201,194 +259,373 @@ footer { width: 100%; }
     text-align: center;
     font-size: 14px;
 }
+
+/* MOBILE RESPONSIVENESS */
+
 @media (max-width: 600px) {
-    .nav-wrap { padding: 0 4px; }
+
+    .nav-wrap {
+        padding: 0 4px;
+    }
+
     .nav-selector {
         min-height: 48px;
         padding: 12px 13px;
         font-size: 14px;
     }
-    main { padding: 24px 12px 42px; }
-    .hero { min-height: 340px; padding: 35px 4px; }
-    .projects { gap: 12px; }
-    .project { padding: 14px 9px; }
-    .project-top { flex-direction: column; gap: 2px; }
-    .project h3 { font-size: 16px; }
-    .project p { font-size: 13px; }
-    .footer-main { padding: 28px 22px; }
-    .footer-content { grid-template-columns: 1fr 1fr; gap: 18px; }
-    .footer-main h2 { font-size: 21px; }
-    .footer-main p { font-size: 14px; line-height: 1.35; }
-    .socials { gap: 18px; }
+
+    main {
+        padding: 24px 12px 42px;
+    }
+
+    .hero {
+        min-height: 340px;
+        padding: 35px 4px;
+    }
+
+    .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .project {
+        min-height: 72px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .footer-main {
+        padding: 28px 22px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .footer-main h2 {
+        font-size: 21px;
+    }
+
+    .footer-main p {
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .socials {
+        gap: 18px;
+    }
 }
+
 @media (max-width: 380px) {
-    .nav-selector { padding: 10px 9px; font-size: 13px; }
-    .footer-content { grid-template-columns: 1fr; }
-    .follow { text-align: left; }
-    .socials { justify-content: flex-start; }
+
+    .nav-selector {
+        padding: 10px 9px;
+        font-size: 13px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .follow {
+        text-align: left;
+    }
+
+    .socials {
+        justify-content: flex-start;
+    }
 }
 </style>
 </head>
+
 <body>
+
 <header>
     <div class="nav-wrap">
         <nav aria-label="Main navigation">
-            <button class="nav-selector active" type="button" data-section="home">Home</button>
-            <button class="nav-selector" type="button" data-section="about">About</button>
-            <button class="nav-selector" type="button" data-section="gallery">Gallery</button>
-            <button class="nav-selector" type="button" data-section="portfolio">Portfolio</button>
-            <button class="nav-selector" type="button" data-section="skills">Skills</button>
-            <button class="nav-selector" type="button" data-section="contact">Contact</button>
+
+            <button class="nav-selector active"
+                    type="button"
+                    data-section="home">
+                Home
+            </button>
+
+            <button class="nav-selector"
+                    type="button"
+                    data-section="about">
+                About
+            </button>
+
+            <button class="nav-selector"
+                    type="button"
+                    data-section="gallery">
+                Gallery
+            </button>
+
+            <button class="nav-selector"
+                    type="button"
+                    data-section="portfolio">
+                Portfolio
+            </button>
+
+            <button class="nav-selector"
+                    type="button"
+                    data-section="skills">
+                Skills
+            </button>
+
+            <button class="nav-selector"
+                    type="button"
+                    data-section="contact">
+                Contact
+            </button>
+
         </nav>
     </div>
 </header>
 
 <main>
+
+    <!-- HOME SECTION -->
+
     <section id="home" class="page-section active">
+
         <section class="hero">
-            <div class="kicker">PORTFOLIO FOR HTML</div>
-            <h1>Railey Vale A. Salugao<span>.</span></h1>
-            <p class="page-intro">
-                Welcome to my portfolio. Explore my background, gallery, skills,
-                and web development activities in HTML, CSS, and JavaScript.
-                (This is not made with ai, purely made by hand, could revise but is discovering new features)
-            </p>
-            <div class="actions">
-                <button class="btn primary" type="button" data-section="portfolio">View Projects </button>
-                <button class="btn secondary" type="button" data-section="contact">Contact</button>
+
+            <div class="kicker">
+                PORTFOLIO FOR HTML
             </div>
+
+            <h1>
+                Railey Vale A. Salugao<span>.</span>
+            </h1>
+
+            <p class="page-intro">
+                Welcome to my portfolio. Explore my background,
+                gallery, skills, and web development activities
+                in HTML, CSS, and JavaScript.
+            </p>
+
+            <div class="actions">
+
+                <button class="btn primary"
+                        type="button"
+                        data-section="portfolio">
+                    View Projects ↗
+                </button>
+
+                <button class="btn secondary"
+                        type="button"
+                        data-section="contact">
+                    Contact
+                </button>
+
+            </div>
+
         </section>
+
     </section>
+
+    <!-- ABOUT SECTION -->
 
     <section id="about" class="page-section"></section>
+
+    <!-- GALLERY SECTION -->
+
     <section id="gallery" class="page-section"></section>
 
+    <!-- PORTFOLIO SECTION -->
+
     <section id="portfolio" class="page-section">
-        <div class="index">PORTFOLIO OF MY PROJECTS</div>
-        <h1>My Programming Projects<span>.</span></h1>
-        <p class="page-intro" style="margin-left:0">My web development activities and projects.</p>
+
+        <div class="index">
+            PORTFOLIO OF PROJECTS
+        </div>
+
+        <h1>
+            My Programming Projects<span>.</span>
+        </h1>
+
+        <p class="page-intro" style="margin-left:0">
+            My web development activities and projects.
+        </p>
 
         <div class="projects">
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_01</span><span class="type">HTML</span></div>
-                <h3>Text Inputs</h3>
-                
-                <a href="text_inputs.html">Open project </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_02</span><span class="type">HTML FORMS</span></div>
-                <h3>Form Elements</h3>
-                
-                <a href="form_elements.html">Open project </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_03</span><span class="type">WEB UI</span></div>
-                <h3>TechNova Employee Portal</h3>
-                
-                <a href="technova_employee_portal_login.html">Open project </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_04</span><span class="type">JAVASCRIPT</span></div>
-                <h3>Sample Calculation</h3>
-                
-                <a href="sample_calculation.html">Open project </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_05</span><span class="type">JAVASCRIPT</span></div>
-                <h3>Discount Calculator</h3>
-                
-                <a href="discount_calculator_railey.html">Open project </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_06</span><span class="type">PROFILE PAGE</span></div>
-                <h3>.NET Developer Profile</h3>
-                
-                <a href="NET_developer_profile.html">Open project </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_07</span><span class="type">CLASS SCHEDULE</span></div>
-                <h3>Class Schedule</h3>
-                
-                <a href="class_schedule_grade12_cooper.html">View Class Schedule </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_08</span><span class="type">STUDENT ARRAY</span></div>
-                <h3>Students of Cooper</h3>
-                
-                <a href="Students_Of_Cooper.html">View Tabular Data </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_09</span><span class="type">GRIDS</span></div>
-                <h3>Grid Test</h3>
-                <a href="grid_test.html">View Grids </a>
-            </article>
-            
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_10</span><span class="type">LOGIN LOGIC</span></div>
-                <h3>Cooper Login Logic</h3>
-            
-                <a href="login_logic_demo.html">View Login Logic </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_11</span><span class="type">DRAG AND DROP API</span></div>
-                <h3>Drag and Drop Matching Word Prototype</h3>
-                
-                <a href="simple_drag_and_drop_prototype.html">View Game API </a>
-            </article>
-            <article class="project">
-                <div class="project-top"><span class="num">PROJECT_12</span><span class="type">DRAG AND DROP GAME</span></div>
-                <h3>Drag and Drop Matching Word</h3>
-                
-                <a href="drag_and_drop_game_simple_1.html">View Game </a>
-            </article>
+
+            <!-- PROJECT 01 -->
+
+            <a class="project" href="text_inputs.html">
+                Text Inputs
+            </a>
+
+            <!-- PROJECT 02 -->
+
+            <a class="project" href="form_elements.html">
+                Form Elements
+            </a>
+
+            <!-- PROJECT 03 -->
+
+            <a class="project" href="technova_employee_portal_login.html">
+                TechNova Employee Portal
+            </a>
+
+            <!-- PROJECT 04 -->
+
+            <a class="project" href="sample_calculation.html">
+                Sample Calculation
+            </a>
+
+            <!-- PROJECT 05 -->
+
+            <a class="project" href="discount_calculator_railey.html">
+                Discount Calculator
+            </a>
+
+            <!-- PROJECT 06 -->
+
+            <a class="project" href="NET_developer_profile.html">
+                .NET Developer Profile
+            </a>
+
+            <!-- PROJECT 07 -->
+
+            <a class="project" href="class_schedule_grade12_cooper.html">
+                Class Schedule
+            </a>
+
+            <!-- PROJECT 08 -->
+
+            <a class="project" href="Students_Of_Cooper.html">
+                Students of Cooper
+            </a>
+
+            <!-- PROJECT 09 -->
+
+            <a class="project" href="grid_test.html">
+                Grid Test
+            </a>
+
+            <!-- PROJECT 10 -->
+
+            <a class="project" href="login_logic_demo.html">
+                Cooper Login Logic
+            </a>
+
+            <!-- PROJECT 11 -->
+
+            <a class="project" href="simple_drag_and_drop_prototype.html">
+                Drag and Drop Matching Word Prototype
+            </a>
+
+            <!-- PROJECT 12 -->
+
+            <a class="project" href="drag_and_drop_game_simple_1.html">
+                Drag and Drop Matching Word Game
+            </a>
+
         </div>
+
     </section>
+
+    <!-- SKILLS SECTION -->
 
     <section id="skills" class="page-section"></section>
 
+    <!-- CONTACT SECTION -->
+
     <section id="contact" class="page-section"></section>
+
 </main>
 
+<!-- FOOTER -->
+
 <footer>
+
     <div class="footer-main">
+
         <div class="footer-content">
+
             <div>
+
                 <h2>Let’s Keep in Touch!</h2>
-                <p>Thanks for stopping by my portfolio. Feel free to connect with me on social media or contact me about projects, ideas, or collaborations.</p>
+
+                <p>
+                    Thanks for stopping by my portfolio.
+                    Feel free to connect with me on social media
+                    or contact me about projects, ideas,
+                    or collaborations.
+                </p>
+
             </div>
+
             <div class="follow">
-                <h2>Follow Me in:</h2>
+
+                <h2>Follow Me</h2>
+
                 <div class="socials">
-                    <a href="#" aria-label="Facebook">Facebook </a>
+
+                    <a href="#" aria-label="Facebook">f</a>
+
                     <a href="#" aria-label="YouTube">▶</a>
-                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+
+                    <a href="#" aria-label="LinkedIn">in</a>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
-    <div class="footer-bottom">Designed by Railey Vale A. Salugao</div>
+
+    <div class="footer-bottom">
+        Designed by Railey Vale A. Salugao
+    </div>
+
 </footer>
 
+<!-- JAVASCRIPT NAVIGATION -->
+
 <script>
+
 document.querySelectorAll("[data-section]").forEach(function (control) {
+
     control.addEventListener("click", function (event) {
+
         event.preventDefault();
+
         const target = control.getAttribute("data-section");
 
         document.querySelectorAll(".page-section").forEach(function (section) {
-            section.classList.toggle("active", section.id === target);
+
+            section.classList.toggle(
+                "active",
+                section.id === target
+            );
+
         });
 
         document.querySelectorAll(".nav-selector").forEach(function (button) {
+
             button.classList.toggle(
                 "active",
                 button.getAttribute("data-section") === target
             );
+
         });
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
     });
+
 });
+
 </script>
+
 </body>
 </html>
