@@ -32,6 +32,38 @@ button:active{transform:translateY(1px);box-shadow:none}
 footer{font-size:12px;color:#a27c91;margin-top:32px}
 @media(max-width:420px){main{padding:18px 12px 45px}.panel,.demo-card{padding:20px 12px}.panel p,.demo-card p{font-size:18px}button{font-size:15px;padding:8px 12px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  
+  .back-home {
+    display: inline-block;
+    margin: 25px 0;
+    padding: 12px 24px;
+
+    background: #f2c6d4;
+    color: #704452;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    border: 2px solid #d9a3b5;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 8px rgba(120, 75, 90, 0.15);
+
+    transition: all 0.3s ease;
+}
+
+.back-home:hover {
+    background: #e8b2c5;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(120, 75, 90, 0.25);
+}
+
+.back-home:active {
+    transform: scale(0.95);
+}
 </style>
 </head>
 <body>
@@ -42,7 +74,7 @@ footer{font-size:12px;color:#a27c91;margin-top:32px}
 
 <div id="revealed" style="display:none">
   <section class="panel">
-    <h2 class="section-title">Fade In · Small Boxes</h2>
+    <h2 class="section-title">Fade In , Small Boxes</h2>
     
     <div id="smallBoxes">
       <div class="small-box" title="Cherry blossom"></div><div class="small-box" title="Cherry wood"></div><div class="small-box" title="Rosewood"></div><div class="small-box" title="Deep cherry"></div>
@@ -51,7 +83,7 @@ footer{font-size:12px;color:#a27c91;margin-top:32px}
   </section>
 
   <section class="demo-card">
-    <h2 class="section-title">Slide Up · Slide Down</h2>
+    <h2 class="section-title">Slide Up , Slide Down</h2>
     <p id="slideText">This paragraph will slide away and come back!</p>
     <div class="controls"><button id="slideUp">Slide Up</button><button id="slideDown">Slide Down</button><button id="slideToggle">Slide Toggle</button></div>
   </section>
@@ -63,14 +95,14 @@ footer{font-size:12px;color:#a27c91;margin-top:32px}
   </section>
 
   <section class="demo-card">
-    <h2 class="section-title">Hide · Show · Toggle</h2>
+    <h2 class="section-title">Hide , Show , Toggle</h2>
     <div id="hideBox">this black man hides and shows</div>
     <div class="controls"><button id="hideBtn">Hide</button><button id="showBtn">Show</button><button id="toggleBtn">Toggle</button></div>
   </section>
 
   <section class="demo-card">
-    <h2 class="section-title">Animate · Custom Effects</h2>
-    <div id="animateBox">Animate me!</div>
+    <h2 class="section-title">Animate , Custom Effects</h2>
+    <div id="animateBox">Animate ts</div>
     <div class="controls"><button id="animateBtn">Animate</button><button id="moveBtn">Move</button><button id="stopBtn">Stop</button><button id="resetBtn">Reset</button></div>
     
   </section>
@@ -132,5 +164,8 @@ $(function(){
   $('#resetBtn').on('click',function(){$('#animateBox').stop(true).removeAttr('style').attr('style','').css({width:'140px',height:'90px',display:'flex',alignItems:'center',justifyContent:'center',background:'var(--soft)',border:'2px solid var(--deep)',position:'relative'});$('#status').text('Animation reset.');});
 });
 </script>
+  <a href="index.html" class="back-home">
+    Back to Landing Page
+  </a>
 </body>
 </html>
