@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claddish | jQuery Effects</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+:root{--wood:#e8a9c4;--light:#fbe8f0;--soft:#f3c9da;--deep:#c27b9d;--dark:#77465c;--cream:#fffafd;--green:#78936b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:Arial,Helvetica,sans-serif}
+main{width:min(100%,680px);margin:auto;padding:24px 16px 60px;text-align:center}
+header{margin:0 0 14px}h1{font-size:28px;margin:0;color:var(--dark);letter-spacing:.5px}header p{display:none}
+/* Main square: tiny at first, expands with jQuery animate */
+#mainBox{width:48px;height:48px;margin:12px auto 26px;background:var(--wood);border:3px solid var(--deep);box-shadow:4px 4px 0 var(--light);cursor:pointer;display:flex;align-items:center;justify-content:center;overflow:hidden;color:var(--dark);font-weight:bold;font-size:clamp(28px,6vw,46px);white-space:nowrap;transition:box-shadow .25s}
+#mainBox.expanded{box-shadow:9px 9px 0 var(--light);cursor:pointer}
+.panel{border:3px solid var(--green);background:#fffdfd;margin:24px auto;padding:28px 18px;max-width:100%;}
+.panel p{font-size:20px;line-height:1.45;margin:12px auto}
+button{font:inherit;font-size:16px;color:var(--dark);background:var(--light);border:1px solid var(--deep);border-radius:5px;padding:9px 15px;margin:5px;cursor:pointer;box-shadow:2px 2px 0 #eed4e0;transition:transform .15s,background .15s}
+button:hover{background:var(--soft);transform:translateY(-2px)}
+button:active{transform:translateY(1px);box-shadow:none}
+.controls{display:flex;justify-content:center;flex-wrap:wrap;gap:3px;margin-top:12px}
+#smallBoxes{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;margin:22px auto;min-height:56px}
+.small-box{width:58px;height:58px;border:2px solid #d5a3ba;box-shadow:3px 3px 0 var(--light);display:none}
+.small-box:nth-child(1){background:#f8dce8}.small-box:nth-child(2){background:#e8a9c4}.small-box:nth-child(3){background:#c27b9d}.small-box:nth-child(4){background:#a96c8b}
+.section-title{font-size:22px;margin:0 0 12px;color:var(--dark)}
+.demo-card{width:min(100%,520px);border:3px solid var(--green);padding:22px 16px;margin:26px auto;background:#fff}
+.demo-card p{font-size:20px;max-width:390px}
+#fadeBox,#hideBox,#toggleBox,#animateBox{padding:18px;margin:16px auto;background:var(--light);border:2px solid var(--deep);width:min(100%,340px);font-size:18px}
+#animateBox{width:140px;height:90px;display:flex;align-items:center;justify-content:center;background:var(--soft);position:relative}
+#status{font-size:13px;color:#a27c91;margin-top:18px;min-height:18px}
+footer{font-size:12px;color:#a27c91;margin-top:32px}
+@media(max-width:420px){main{padding:18px 12px 45px}.panel,.demo-card{padding:20px 12px}.panel p,.demo-card p{font-size:18px}button{font-size:15px;padding:8px 12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header><h1>Claddish</h1></header>
+
+<div id="mainBox" role="button" tabindex="0" aria-expanded="false" title="Click to expand">+</div>
+
+<div id="revealed" style="display:none">
+  <section class="panel">
+    <h2 class="section-title">Fade In · Small Boxes</h2>
+    
+    <div id="smallBoxes">
+      <div class="small-box" title="Cherry blossom"></div><div class="small-box" title="Cherry wood"></div><div class="small-box" title="Rosewood"></div><div class="small-box" title="Deep cherry"></div>
+    </div>
+    <div class="controls"><button id="fadeInBoxes">Fade In</button><button id="fadeOutBoxes">Fade Out</button><button id="fadeToggleBoxes">Fade Toggle</button></div>
+  </section>
+
+  <section class="demo-card">
+    <h2 class="section-title">Slide Up · Slide Down</h2>
+    <p id="slideText">This paragraph will slide away and come back!</p>
+    <div class="controls"><button id="slideUp">Slide Up</button><button id="slideDown">Slide Down</button><button id="slideToggle">Slide Toggle</button></div>
+  </section>
+
+  <section class="demo-card">
+    <h2 class="section-title">Fade Effects</h2>
+    <p id="fadeBox">dream girl wallahi</p>
+    <div class="controls"><button id="fadeOut">Fade Out</button><button id="fadeIn">Fade In</button><button id="fadeTo">Fade To 40%</button><button id="fadeReset">Reset Opacity</button></div>
+  </section>
+
+  <section class="demo-card">
+    <h2 class="section-title">Hide · Show · Toggle</h2>
+    <div id="hideBox">this black man hides and shows</div>
+    <div class="controls"><button id="hideBtn">Hide</button><button id="showBtn">Show</button><button id="toggleBtn">Toggle</button></div>
+  </section>
+
+  <section class="demo-card">
+    <h2 class="section-title">Animate · Custom Effects</h2>
+    <div id="animateBox">Animate me!</div>
+    <div class="controls"><button id="animateBtn">Animate</button><button id="moveBtn">Move</button><button id="stopBtn">Stop</button><button id="resetBtn">Reset</button></div>
+    
+  </section>
+  <div id="status" aria-live="polite"></div>
+</div>
+
+</main>
+<script>
+$(function(){
+  const $mainBox=$('#mainBox'), $revealed=$('#revealed');
+  let opened=false;
+  function openScene(){
+    if(opened)return; opened=true;
+    $mainBox.addClass('expanded').attr({'aria-expanded':'true','title':'Click to collapse'}).text('Claddish');
+    $mainBox.stop(true).animate({width:Math.min(window.innerWidth-36,620)+'px',height:'150px'},500,'swing',function(){
+      $revealed.stop(true,true).slideDown(450);
+      $('#smallBoxes .small-box').each(function(i){$(this).delay(i*140).fadeIn(350)});
+    });
+  }
+  function closeScene(){
+    if(!opened)return; opened=false;
+    $revealed.stop(true,true).slideUp(250,function(){
+      $mainBox.removeClass('expanded').text('+').attr({'aria-expanded':'false','title':'Click to expand'}).stop(true).animate({width:'48px',height:'48px'},450);
+    });
+  }
+  $mainBox.on('click',function(){opened?closeScene():openScene()}).on('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();opened?closeScene():openScene()}});
+
+  // fadeIn(), fadeOut(), and fadeToggle()
+  $('#fadeInBoxes').on('click',()=>$('#smallBoxes .small-box').each(function(i){$(this).delay(i*120).fadeIn(350)}));
+  $('#fadeOutBoxes').on('click',()=>$('#smallBoxes .small-box').each(function(i){$(this).delay(i*90).fadeOut(250)}));
+  $('#fadeToggleBoxes').on('click',()=>$('#smallBoxes .small-box').fadeToggle(400));
+
+  // slideUp(), slideDown(), slideToggle()
+  $('#slideUp').on('click',()=>$('#slideText').slideUp(450));
+  $('#slideDown').on('click',()=>$('#slideText').slideDown(450));
+  $('#slideToggle').on('click',()=>$('#slideText').slideToggle(450));
+
+  // fadeOut(), fadeIn(), fadeTo()
+  $('#fadeOut').on('click',()=>$('#fadeBox').fadeOut(600));
+  $('#fadeIn').on('click',()=>$('#fadeBox').fadeIn(600));
+  $('#fadeTo').on('click',()=>$('#fadeBox').fadeTo(500,0.4));
+  $('#fadeReset').on('click',()=>$('#fadeBox').fadeTo(300,1));
+
+  // hide(), show(), toggle()
+  $('#hideBtn').on('click',()=>$('#hideBox').hide(400));
+  $('#showBtn').on('click',()=>$('#hideBox').show(400));
+  $('#toggleBtn').on('click',()=>$('#hideBox').toggle(400));
+
+  // animate(), delay(), stop(), queue(), clearQueue()
+  $('#animateBtn').on('click',function(){
+    $('#animateBox').stop(true).animate({width:'240px',height:'130px',opacity:0.55},500).delay(250).animate({width:'140px',height:'90px',opacity:1},500);
+    $('#status').text('animate() + delay() are running.');
+  });
+  $('#moveBtn').on('click',function(){
+    $('#animateBox').stop(true).animate({left:'35px',top:'12px',borderRadius:'24px'},450).animate({left:'0px',top:'0px',borderRadius:'0px'},450);
+    $('#status').text('Queued animations are moving!');
+  });
+  $('#stopBtn').on('click',function(){$('#animateBox').stop(true);$('#status').text('Animation stopped and queue cleared.');});
+  $('#resetBtn').on('click',function(){$('#animateBox').stop(true).removeAttr('style').attr('style','').css({width:'140px',height:'90px',display:'flex',alignItems:'center',justifyContent:'center',background:'var(--soft)',border:'2px solid var(--deep)',position:'relative'});$('#status').text('Animation reset.');});
+});
+</script>
+</body>
+</html>
