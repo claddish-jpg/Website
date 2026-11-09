@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Some Carousel</title>
+    <!-- Tailwind CSS for utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkTheme: {
+                            bg: '#fdf2f5',
+                            title: '#6b2142',
+                            link: '#8c2d58',
+                            linkHover: '#b03b72',
+                            activeDot: '#b03b72',
+                            inactiveDot: '#e2cbd5',
+                            cardBg: '#ffffff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fdf2f5;
+        }
+
+        /* Carousel transitions */
+        .slide {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* Fixed aspect ratio carousel container */
+        .carousel-container {
+            width: 100%;
+            max-width: 440px;
+            aspect-ratio: 4 / 3;
+        }
+
+        /* Navigation Button Hover effects */
+        .nav-btn {
+            background-color: rgba(60, 60, 60, 0.65);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .nav-btn:hover {
+            background-color: rgba(40, 40, 40, 0.85);
+        }
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Bottom overlay caption shadow */
+        .caption-overlay {
+            background: rgba(80, 80, 80, 0.7);
+            backdrop-filter: blur(2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-800 flex flex-col items-center justify-start pt-8 pb-12 px-4 selection:bg-pink-200">
+
+    <!-- Header Section -->
+    <header class="text-center mb-6">
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-pinkTheme-title mb-3">
+            My Photo Gallery
+        </h1>
+        <a href="#" onclick="event.preventDefault(); goToSlide(0);" class="text-pinkTheme-link underline text-lg font-medium hover:text-pinkTheme-linkHover transition-colors">
+            Home
+        </a>
+    </header>
+
+    <!-- Carousel Wrapper -->
+    <main class="w-full flex flex-col items-center">
+        <!-- Main Image Card Container -->
+    <div class="carousel-container relative rounded-2xl overflow-hidden shadow-lg bg-white border border-pink-100 flex items-center justify-center">
+        
+        <!-- Slide 1: Owl -->
+        <div class="slide absolute inset-0 w-full h-full opacity-100 transition-opacity duration-300 flex items-center justify-center bg-white">
+            <img src="owl.jpeg" alt="A picture of an Owl." class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x450/fdf2f5/6b2142?text=Owl+Photo';">
+        </div>
+
+        <!-- Slide 2: Rose / Flower -->
+        <div class="slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-300 flex items-center justify-center bg-white">
+            <img src="flower.jpeg" alt="A picture of a Flower." class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x450/fdf2f5/6b2142?text=Flower+Photo';">
+        </div>
+
+        <!-- Slide 3: Long-haired dog -->
+        <div class="slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-300 flex items-center justify-center bg-white">
+            <img src="dog1.jpeg" alt="shlawg" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x450/fdf2f5/6b2142?text=Cute+Doggo';">
+        </div>
+
+        <!-- Slide 4: Beagle -->
+        <div class="slide absolute inset-0 w-full h-full opacity-0 transition-opacity duration-300 flex items-center justify-center bg-white">
+            <img src="dog2.jpeg" alt="shlawg 2" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x450/fdf2f5/6b2142?text=Cute+Doggo+2';">
+        </div>
+
+        <!-- Navigation Arrow Left -->
+            <button id="prevBtn" onclick="prevSlide()" aria-label="Previous Slide" class="nav-btn absolute left-3 top-1/2 -translate-y-1/2 text-white w-9 h-11 md:w-10 md:h-12 flex items-center justify-center rounded focus:outline-none z-20">
+                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Navigation Arrow Right -->
+            <button id="nextBtn" onclick="nextSlide()" aria-label="Next Slide" class="nav-btn absolute right-3 top-1/2 -translate-y-1/2 text-white w-9 h-11 md:w-10 md:h-12 flex items-center justify-center rounded focus:outline-none z-20">
+                <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Bottom Caption Bar Banner -->
+            <div class="caption-overlay absolute bottom-0 left-0 right-0 py-3 px-4 text-white z-10">
+                <p id="captionText" class="text-sm md:text-base font-normal tracking-wide transition-opacity duration-200">
+                    A picture of an Owl.
+                </p>
+            </div>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div class="flex items-center justify-center space-x-2.5 mt-4" id="dotsContainer">
+            <button onclick="goToSlide(0)" aria-label="Go to slide 1" class="dot w-3.5 h-3.5 rounded-full bg-pinkTheme-activeDot transition-all duration-200 focus:outline-none"></button>
+            <button onclick="goToSlide(1)" aria-label="Go to slide 2" class="dot w-3.5 h-3.5 rounded-full bg-pinkTheme-inactiveDot transition-all duration-200 focus:outline-none hover:bg-pink-300"></button>
+            <button onclick="goToSlide(2)" aria-label="Go to slide 3" class="dot w-3.5 h-3.5 rounded-full bg-pinkTheme-inactiveDot transition-all duration-200 focus:outline-none hover:bg-pink-300"></button>
+            <button onclick="goToSlide(3)" aria-label="Go to slide 4" class="dot w-3.5 h-3.5 rounded-full bg-pinkTheme-inactiveDot transition-all duration-200 focus:outline-none hover:bg-pink-300"></button>
+        </div>
+    </main>
+
+    <!-- Carousel Logic -->
+    <script>
+        const captions = [
+            "A picture of an Owl.",
+            "A picture of a Flower.",
+            "shlawg",
+            "another shlawg"
+        ];
+
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const captionText = document.getElementById('captionText');
+
+        function updateCarousel(index) {
+            // Update slides visibility
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'pointer-events-none');
+                    slide.classList.add('opacity-100', 'z-0');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-0');
+                    slide.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            // Update dots active state
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-pinkTheme-inactiveDot');
+                    dot.classList.add('bg-pinkTheme-activeDot');
+                } else {
+                    dot.classList.remove('bg-pinkTheme-activeDot');
+                    dot.classList.add('bg-pinkTheme-inactiveDot');
+                }
+            });
+
+            // Update caption with fade effect
+            captionText.style.opacity = '0';
+            setTimeout(() => {
+                captionText.textContent = captions[index];
+                captionText.style.opacity = '1';
+            }, 150);
+
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(nextIndex);
+        }
+
+        function prevSlide() {
+            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(prevIndex);
+        }
+
+        function goToSlide(index) {
+            if (index !== currentIndex) {
+                updateCarousel(index);
+            }
+        }
+
+        // Keyboard navigation (Left / Right Arrows)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+
+        // Touch Swipe Gesture support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const container = document.querySelector('.carousel-container');
+
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 40;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+            }
+        }
+    </script>
+</body>
+  </html>
