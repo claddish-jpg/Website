@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,8 +164,8 @@ h3 {
 
 .projects {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
     margin-top: 28px;
 }
 
@@ -174,16 +173,16 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 72px;
-    padding: 12px;
+    min-height: 52px;
+    padding: 8px 10px;
     text-align: center;
     background: var(--pink);
-    border: 3px solid var(--red);
+    border: 2px solid var(--red);
     border-radius: 6px;
     text-decoration: none;
     color: var(--red-dark);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.2s;
@@ -262,6 +261,15 @@ footer {
 
 /* MOBILE RESPONSIVENESS */
 
+@media (max-width: 768px) {
+
+    .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+}
+
 @media (max-width: 600px) {
 
     .nav-wrap {
@@ -283,15 +291,10 @@ footer {
         padding: 35px 4px;
     }
 
-    .projects {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-
     .project {
-        min-height: 72px;
-        padding: 10px;
-        font-size: 16px;
+        min-height: 48px;
+        padding: 8px;
+        font-size: 14px;
     }
 
     .footer-main {
@@ -315,6 +318,14 @@ footer {
     .socials {
         gap: 18px;
     }
+}
+
+@media (max-width: 480px) {
+
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 @media (max-width: 380px) {
@@ -533,7 +544,6 @@ footer {
                 Photo Carousel
             </a>
 
-
             <a class="project" href="Save_Gallery.html">
                 Save Grades
             </a>
@@ -642,3 +652,4 @@ document.querySelectorAll("[data-section]").forEach(function (control) {
 
 </body>
 </html>
+
