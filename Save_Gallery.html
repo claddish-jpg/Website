@@ -3,46 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Save_Grades</title>
-
     <style>
-table, th, td{
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
-    padding: 2px 5px;
+    padding: 6px 10px;
+    text-align: center;
 }
-
-.form-container{
+.form-container {
     margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
-#message{
+#message {
     color: red;
     margin-top: 5px;
+    margin-bottom: 15px;
+    height: 18px;
 }
-
     </style>
-
 </head>
-
 <body>
 
-    <h1> Save Grades </h1>
+    <h1>Save Grades</h1>
 
     <div class="form-container">
-        <!-- Input limits added via maxlength attribute -->
-        <label for="txtLRN">LRN </label>
+        <label for="txtLRN">LRN</label>
         <input type="text" id="txtLRN" maxlength="12">
 
-        <label for="txtSection">Section </label>
+        <label for="txtSection">Section</label>
         <input type="text" id="txtSection" maxlength="20">
         
-        <label for="txtName">Name </label>
+        <label for="txtName">Name</label>
         <input type="text" id="txtName" maxlength="50">
         
-        <label for="txtSubject">Subject </label>
+        <label for="txtSubject">Subject</label>
         <input type="text" id="txtSubject" maxlength="30">
         
-        <label for="txtGrade">Grade </label>
+        <label for="txtGrade">Grade</label>
         <input type="text" id="txtGrade" style="width: 60px;" maxlength="5">
         
         <button id="btnSave">Save</button>
@@ -74,7 +84,6 @@ table, th, td{
         var tableBody = document.getElementById("tableBody");
         var message = document.getElementById("message");
 
-        // Define character length limits
         var LIMITS = {
             lrn: 12,
             section: 20,
@@ -105,28 +114,33 @@ table, th, td{
             var grade = txtGrade.value.trim();
 
             if (lrn === "" || section === "" || name === "" || subject === "" || grade === "") {
+                message.style.color = "red";
                 message.textContent = "Please fill in all the boxes.";
                 return;
             }
 
-            // Validate maximum character limits in JavaScript
             if (lrn.length > LIMITS.lrn) {
+                message.style.color = "red";
                 message.textContent = "LRN cannot exceed " + LIMITS.lrn + " characters.";
                 return;
             }
             if (section.length > LIMITS.section) {
+                message.style.color = "red";
                 message.textContent = "Section cannot exceed " + LIMITS.section + " characters.";
                 return;
             }
             if (name.length > LIMITS.name) {
+                message.style.color = "red";
                 message.textContent = "Name cannot exceed " + LIMITS.name + " characters.";
                 return;
             }
             if (subject.length > LIMITS.subject) {
+                message.style.color = "red";
                 message.textContent = "Subject cannot exceed " + LIMITS.subject + " characters.";
                 return;
             }
             if (grade.length > LIMITS.grade) {
+                message.style.color = "red";
                 message.textContent = "Grade cannot exceed " + LIMITS.grade + " characters.";
                 return;
             }
