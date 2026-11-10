@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save_Grades</title>
+
+    <style>
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2px 5px;
+}
+
+.form-container{
+    margin-bottom: 10px;
+}
+
+#message{
+    color: red;
+    margin-top: 5px;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Save Grades </h1>
+
+    <div class="form-container">
+        <!-- Input limits added via maxlength attribute -->
+        <label for="txtLRN">LRN </label>
+        <input type="text" id="txtLRN" maxlength="12">
+
+        <label for="txtSection">Section </label>
+        <input type="text" id="txtSection" maxlength="20">
+        
+        <label for="txtName">Name </label>
+        <input type="text" id="txtName" maxlength="50">
+        
+        <label for="txtSubject">Subject </label>
+        <input type="text" id="txtSubject" maxlength="30">
+        
+        <label for="txtGrade">Grade </label>
+        <input type="text" id="txtGrade" style="width: 60px;" maxlength="5">
+        
+        <button id="btnSave">Save</button>
+    </div>
+
+    <div id="message"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>LRN</th>
+                <th>Section</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script>
+        var txtLRN = document.getElementById("txtLRN");
+        var txtSection = document.getElementById("txtSection");
+        var txtName = document.getElementById("txtName");
+        var txtSubject = document.getElementById("txtSubject");
+        var txtGrade = document.getElementById("txtGrade");
+        var btnSave = document.getElementById("btnSave");
+        var tableBody = document.getElementById("tableBody");
+        var message = document.getElementById("message");
+
+        // Define character length limits
+        var LIMITS = {
+            lrn: 12,
+            section: 20,
+            name: 50,
+            subject: 30,
+            grade: 5
+        };
+
+        var grades = JSON.parse(localStorage.getItem("grades")) || [];
+
+        function showGrades() {
+            tableBody.textContent = ""; 
+            for (var i = 0; i < grades.length; i++) {
+                var row = tableBody.insertRow(); 
+                row.insertCell().textContent = grades[i].lrn;
+                row.insertCell().textContent = grades[i].section;
+                row.insertCell().textContent = grades[i].name;
+                row.insertCell().textContent = grades[i].subject;
+                row.insertCell().textContent = grades[i].grade;
+            }
+        }
+
+        function saveGrade() {
+            var lrn = txtLRN.value.trim();
+            var section = txtSection.value.trim();
+            var name = txtName.value.trim();
+            var subject = txtSubject.value.trim();
+            var grade = txtGrade.value.trim();
+
+            if (lrn === "" || section === "" || name === "" || subject === "" || grade === "") {
+                message.textContent = "Please fill in all the boxes.";
+                return;
+            }
+
+            // Validate maximum character limits in JavaScript
+            if (lrn.length > LIMITS.lrn) {
+                message.textContent = "LRN cannot exceed " + LIMITS.lrn + " characters.";
+                return;
+            }
+            if (section.length > LIMITS.section) {
+                message.textContent = "Section cannot exceed " + LIMITS.section + " characters.";
+                return;
+            }
+            if (name.length > LIMITS.name) {
+                message.textContent = "Name cannot exceed " + LIMITS.name + " characters.";
+                return;
+            }
+            if (subject.length > LIMITS.subject) {
+                message.textContent = "Subject cannot exceed " + LIMITS.subject + " characters.";
+                return;
+            }
+            if (grade.length > LIMITS.grade) {
+                message.textContent = "Grade cannot exceed " + LIMITS.grade + " characters.";
+                return;
+            }
+
+            var record = { lrn: lrn, section: section, name: name, subject: subject, grade: grade };
+
+            grades.push(record); 
+            localStorage.setItem("grades", JSON.stringify(grades)); 
+
+            message.style.color = "green";
+            message.textContent = "Saved successfully.";
+
+            txtLRN.value = "";
+            txtSection.value = "";
+            txtName.value = "";
+            txtSubject.value = "";
+            txtGrade.value = "";
+            showGrades();
+        }
+
+        btnSave.addEventListener("click", saveGrade);
+
+        showGrades();
+    </script>
+
+</body>
+</html>
