@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Flexbox Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 20px;
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      color: #263238;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .description {
+      text-align: center;
+      color: #607080;
+      margin-bottom: 24px;
+    }
+
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+
+      width: 700px;
+      height: 420px;
+      min-width: 260px;
+      min-height: 220px;
+      max-width: 100%;
+
+      margin: 0 auto;
+      padding: 20px;
+      background: #ffffff;
+      border: 2px solid #8998a8;
+
+      resize: both;
+      overflow: auto;
+    }
+
+    .flex-child {
+      flex: 1 1 200px;
+      min-width: 0;
+      min-height: 110px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: #8bb8e8;
+      border: 2px solid #f2f4f7;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .flex-child:nth-child(even) {
+      background: #f5b4ec;
+      border-color: #f0e7ee;
+    }
+
+    @media (max-width: 740px) {
+      .flex-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="flex-container">
+    <div class="flex-child">Child 1</div>
+    <div class="flex-child">Child 2</div>
+    <div class="flex-child">Child 3</div>
+    <div class="flex-child">Child 4</div>
+    <div class="flex-child">Child 5</div>
+    <div class="flex-child">Child 6</div>
+  </main>
+</body>
+</html>
