@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px 16px 40px;
+      background: #fff5f9;
+      color: #8f3f68;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    main {
+      width: min(560px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .shape-card {
+      padding: 25px 24px 28px;
+      background: #f0dce7;
+      border: 3px solid #b85d88;
+      border-radius: 18px;
+      box-shadow: 0 5px 12px rgba(133, 61, 94, .09);
+    }
+    h2 {
+      margin: 0 0 24px;
+      text-align: center;
+      color: #9b426d;
+      font-size: 27px;
+      font-weight: 500;
+    }
+    .drawing {
+      width: 100%;
+      height: 330px;
+      display: block;
+      background: #fffafd;
+      border: 3px solid #df8eb2;
+      border-radius: 10px;
+    }
+    .text-drawing {
+      height: 380px;
+      border: 0;
+      background: #fffafd;
+    }
+    .line-drawing { height: 330px; border: 0; }
+    .home {
+      display: block;
+      width: min(560px, 100%);
+      margin: 22px auto 0;
+      color: #9b426d;
+      font-size: 20px;
+    }
+    @media (max-width: 420px) {
+      body { padding: 22px 14px 32px; }
+      .shape-card { padding: 22px 18px 24px; }
+      h2 { font-size: 24px; }
+      .drawing { height: 290px; }
+      .text-drawing { height: 340px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="shape-card">
+      <h2>Circle element</h2>
+      <svg class="drawing" viewBox="0 0 440 330" role="img" aria-label="Pink circle">
+        <circle cx="220" cy="165" r="124" fill="#e8a9c5" stroke="#9b426d" stroke-width="10"/>
+      </svg>
+    </section>
+
+    <section class="shape-card">
+      <h2>g element</h2>
+      <svg class="drawing" viewBox="0 0 440 330" role="img" aria-label="Grouped rectangles">
+        <g fill="#fffafd" stroke="#bd5d8c" stroke-width="12">
+          <rect x="28" y="38" width="204" height="122"/>
+          <rect x="28" y="172" width="204" height="120"/>
+          <rect x="244" y="38" width="168" height="254"/>
+        </g>
+        <path d="M232 38 V292" stroke="#e9a3c1" stroke-width="8"/>
+      </svg>
+    </section>
+
+    <section class="shape-card">
+      <h2>Polygon element</h2>
+      <svg class="drawing" viewBox="0 0 440 390" role="img" aria-label="Pink polygon shape">
+        <rect x="0" y="0" width="440" height="390" rx="9" fill="#f2c9da"/>
+        <polygon points="42,28 338,44 220,190 110,355 246,220 205,184"
+                 fill="#d77fa6" stroke="#a94d79" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+    </section>
+
+    <section class="shape-card">
+      <h2>Text element</h2>
+      <svg class="drawing text-drawing" viewBox="0 0 440 380" role="img" aria-label="Text showing oh my days and Krizzia glazer">
+        <rect x="0" y="0" width="440" height="380" rx="10" fill="#fffafd"/>
+        <text x="72" y="112" font-size="34" fill="#a34472"
+              font-family="Arial, sans-serif" transform="rotate(25 72 112)">oh my days</text>
+        <text x="92" y="250" font-size="34" fill="#c16a91"
+              font-family="Arial, sans-serif" transform="rotate(90 92 250)">Krizzia glazer</text>
+      </svg>
+    </section>
+
+    <section class="shape-card">
+      <h2>Line element</h2>
+      <svg class="drawing line-drawing" viewBox="0 0 440 330" role="img" aria-label="Diagonal pink line">
+        <line x1="34" y1="35" x2="406" y2="294"
+              stroke="#a34472" stroke-width="11" stroke-linecap="round"/>
+      </svg>
+    </section>
+  </main>
+  <a class="home" href="#">Home</a>
+</body>
+</html>
