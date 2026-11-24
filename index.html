@@ -347,6 +347,455 @@ footer {
         justify-content: flex-start;
     }
 }
+
+    
+/* =================================
+   ABOUT SECTION
+================================= */
+
+.about-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-label {
+    color: var(--red-dark);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.about-heading h2 {
+    font-family: Georgia, serif;
+    color: var(--red-dark);
+    font-size: 36px;
+    margin: 8px 0;
+}
+
+.about-heading p {
+    color: var(--muted);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.about-accordion {
+    background: var(--pink);
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-accordion summary {
+    padding: 16px;
+    color: var(--red-dark);
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.25s ease;
+}
+
+.about-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.about-accordion summary::after {
+    content: "+";
+    float: right;
+    font-size: 20px;
+}
+
+.about-accordion[open] summary::after {
+    content: "−";
+}
+
+.about-accordion summary:hover {
+    background: var(--red-active);
+    color: white;
+}
+
+.accordion-content {
+    padding: 0 16px 16px;
+    color: var(--muted);
+    animation: slideDown 0.35s ease;
+}
+
+.accordion-content p {
+    margin: 0;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PROFILE CARD */
+
+.about-profile {
+    background: var(--pink);
+    border: 1px solid var(--red);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--red-active);
+    border: 4px solid var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.profile-picture:hover img {
+    transform: scale(1.08);
+}
+
+.profile-placeholder {
+    color: white;
+    font-weight: bold;
+}
+
+.about-profile h3 {
+    color: var(--red-dark);
+    margin-bottom: 4px;
+}
+
+.profile-subtitle {
+    color: var(--muted);
+    margin-top: 0;
+}
+
+.profile-details {
+    text-align: left;
+    margin-top: 22px;
+}
+
+.profile-details div {
+    border-top: 1px solid var(--red);
+    padding: 12px 0;
+}
+
+.profile-details span {
+    color: var(--red-dark);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.profile-details p {
+    margin: 4px 0 0;
+    color: var(--text);
+}
+
+/* =================================
+   GALLERY SECTION
+================================= */
+
+.gallery-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.gallery-heading h1 {
+    margin-top: 8px;
+}
+
+.gallery-container {
+    max-width: 750px;
+    margin: auto;
+}
+
+.gallery-counter {
+    text-align: right;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.gallery-counter span {
+    color: var(--red-dark);
+    font-weight: bold;
+}
+
+.gallery-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--pink);
+    border: 2px solid var(--red);
+}
+
+.gallery-slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-slide.active {
+    display: block;
+    animation: galleryFade 0.45s ease;
+}
+
+@keyframes galleryFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--red-dark);
+    background: var(--pink);
+}
+
+.gallery-placeholder span {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.gallery-placeholder strong {
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.gallery-placeholder small {
+    color: var(--muted);
+}
+
+.gallery-description {
+    text-align: center;
+    margin: 22px 0;
+}
+
+.gallery-description h3 {
+    color: var(--red-dark);
+    font-family: Georgia, serif;
+}
+
+.gallery-description p {
+    color: var(--muted);
+}
+
+.gallery-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.gallery-btn {
+    padding: 10px 15px;
+    border: 1px solid var(--red);
+    border-radius: 6px;
+    background: var(--pink);
+    color: var(--red-dark);
+    cursor: pointer;
+}
+
+.gallery-btn:hover {
+    background: var(--red-active);
+    color: white;
+}
+
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+}
+
+.gallery-dot {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--red);
+    cursor: pointer;
+}
+
+.gallery-dot.active {
+    background: var(--red-dark);
+    transform: scale(1.25);
+}
+
+.gallery-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+/* MOBILE ABOUT AND GALLERY */
+
+@media (max-width: 700px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-profile {
+        max-width: 100%;
+    }
+
+    .gallery-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .gallery-dots {
+        order: 3;
+        width: 100%;
+    }
+    }
+    
+/* =================================
+   CONTACT SECTION
+================================= */
+
+.contact-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.contact-heading h1 {
+    margin-top: 10px;
+}
+
+.contact-container {
+    max-width: 680px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 16px;
+    min-width: 0;
+    background: var(--pink);
+    border: 1px solid var(--red);
+    border-radius: 9px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.contact-card:hover {
+    background: #f9e8ed;
+    transform: translateY(-5px);
+    box-shadow: 0 7px 18px rgba(166, 111, 124, 0.15);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red);
+    color: white;
+    border-radius: 50%;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.contact-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.contact-info span {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--red-dark);
+}
+
+.contact-info h3 {
+    margin: 4px 0;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.contact-info small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.contact-arrow {
+    color: var(--red-dark);
+    font-size: 19px;
+}
+
+.contact-note {
+    text-align: center;
+    margin-top: 35px;
+    color: var(--muted);
+}
+
+.contact-note p {
+    color: var(--red-dark);
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+    
+    
 </style>
 </head>
 
@@ -439,12 +888,235 @@ footer {
     </section>
 
     <!-- ABOUT SECTION -->
+<section id="about" class="page-section">
 
-    <section id="about" class="page-section"></section>
+    <div class="about-heading">
+        <span class="section-label">GET TO KNOW ME</span>
+        <h2>About Me</h2>
+        <p>A little introduction to who I am, what I do, and what inspires me.</p>
+    </div>
 
-    <!-- GALLERY SECTION -->
+    <div class="about-container">
 
-    <section id="gallery" class="page-section"></section>
+        <!-- LEFT SIDE: ABOUT ACCORDION -->
+        <div class="about-content">
+
+            <details class="about-accordion">
+                <summary>01. About Me</summary>
+                <div class="accordion-content">
+                    <p>
+                        Hi I'm Railey Vale, I'm a high end Software Programmer and I'm willing to work
+                        in any prestigious organizations possible.
+                    </p>
+                </div>
+            </details>
+
+            <details class="about-accordion">
+                <summary>02. Background</summary>
+                <div class="accordion-content">
+                    <p>
+                        I've went to senior high school at GJRRSHS, and i had a keen eye on programming
+                        because of my gaming experiences and the huge liking into game development.
+                    </p>
+                        
+                </div>
+            </details>
+
+            <details class="about-accordion">
+                <summary>03. Interests and Passions</summary>
+                <div class="accordion-content">
+                    <p>
+                        My favorite activities are larping, day dreaming, playing games such as; Mobile legends
+                        Roblox, any fps games, OSU (because i have a huge liking into rhythm games) and etc.
+                    </p>
+                </div>
+            </details>
+
+            <details class="about-accordion">
+                <summary>04. Personality and Work Ethic</summary>
+                <div class="accordion-content">
+                    <p>
+                        Im very antisocial and i never ever want to be controlled, I think people who settle
+                        as an employee and think like an employee, will never reach higher in life. (And i really hate school)
+                    </p>
+                </div>
+            </details>
+
+            <details class="about-accordion">
+                <summary>05. My Programming Philosophy</summary>
+                <div class="accordion-content">
+                    <p>
+                        l hope to contribute big time in game development and ai engineering, 
+                        
+                    </p>
+                </div>
+            </details>
+
+            <details class="about-accordion">
+                <summary>06. Accomplishments and Experiences</summary>
+                <div class="accordion-content">
+                    <p>
+                        I've made ai models and animation models because of my huge liking into programming
+                        I have a big certification for this programming language called LUA.
+                    </p>
+                </div>
+            </details>
+
+        </div>
+
+        <!-- RIGHT SIDE: PROFILE CARD -->
+        <div class="about-profile">
+
+            <div class="profile-picture">
+                <img src="images/profile.jpg" alt="Profile picture">
+            </div>
+
+            <h3>Railey Vale A. Salugao</h3>
+            <p class="profile-subtitle">Game Developer</p>
+
+            <div class="profile-details">
+                <div>
+                    <span>School</span>
+                    <p>Gov. Juanito Reyes Remulla Senior High School</p>
+                </div>
+
+                <div>
+                    <span>Strand</span>
+                    <p>Java Programming NCIII</p>
+                </div>
+
+                <div>
+                    <span>Section</span>
+                    <p>12-Cooper</p>
+                </div>
+
+                <div>
+                    <span>Field of Interest</span>
+                    <p>Game development</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =================================
+     GALLERY SECTION
+================================= -->
+
+<section id="gallery" class="page-section">
+
+    <div class="gallery-heading">
+        <p class="kicker">A COLLECTION OF MOMENTS</p>
+        <h1>My Gallery</h1>
+        <p class="page-intro">
+            A glimpse into my experiences, achievements, and memories.
+        </p>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="gallery-counter">
+            <span id="gallery-current">01</span> / 07
+        </div>
+
+        <div class="gallery-frame">
+
+            <div class="gallery-slide active">
+                <div class="gallery-placeholder">
+                    <span>01</span>
+                    <strong>My Introduction</strong>
+                    <small>Insert your first image</small>
+                </div>
+            </div>
+
+            <div class="gallery-slide">
+                <div class="gallery-placeholder">
+                    <span>02</span>
+                    <strong>Academic Life</strong>
+                    <small>Insert your second image</small>
+                </div>
+            </div>
+
+            <div class="gallery-slide">
+                <div class="gallery-placeholder">
+                    <span>03</span>
+                    <strong>Programming Journey</strong>
+                    <small>Insert your third image</small>
+                </div>
+            </div>
+
+            <div class="gallery-slide">
+                <div class="gallery-placeholder">
+                    <span>04</span>
+                    <strong>Projects and Creations</strong>
+                    <small>Insert your fourth image</small>
+                </div>
+            </div>
+
+            <div class="gallery-slide">
+                <div class="gallery-placeholder">
+                    <span>05</span>
+                    <strong>Achievements</strong>
+                    <small>Insert your fifth image</small>
+                </div>
+            </div>
+
+            <div class="gallery-slide">
+                <div class="gallery-placeholder">
+                    <span>06</span>
+                    <strong>Experiences</strong>
+                    <small>Insert your sixth image</small>
+                </div>
+            </div>
+
+            <div class="gallery-slide">
+                <div class="gallery-placeholder">
+                    <span>07</span>
+                    <strong>Memories</strong>
+                    <small>Insert your seventh image</small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="gallery-description">
+            <h3 id="gallery-title">My Introduction</h3>
+            <p id="gallery-text">
+                A short introduction about this photograph.
+            </p>
+        </div>
+
+        <div class="gallery-controls">
+
+            <button class="gallery-btn" id="gallery-prev" type="button">
+                ← Previous
+            </button>
+
+            <div class="gallery-dots">
+                <button class="gallery-dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="gallery-dot" data-slide="1" aria-label="Slide 2"></button>
+                <button class="gallery-dot" data-slide="2" aria-label="Slide 3"></button>
+                <button class="gallery-dot" data-slide="3" aria-label="Slide 4"></button>
+                <button class="gallery-dot" data-slide="4" aria-label="Slide 5"></button>
+                <button class="gallery-dot" data-slide="5" aria-label="Slide 6"></button>
+                <button class="gallery-dot" data-slide="6" aria-label="Slide 7"></button>
+            </div>
+
+            <button class="gallery-btn" id="gallery-next" type="button">
+                Next →
+            </button>
+
+        </div>
+
+        <p class="gallery-note">
+            Use the arrows or dots to navigate through the gallery.
+        </p>
+
+    </div>
+
+</section>
 
     <!-- PORTFOLIO SECTION -->
 
@@ -570,9 +1242,80 @@ footer {
 
     <section id="skills" class="page-section"></section>
 
-    <!-- CONTACT SECTION -->
+<!-- CONTACT SECTION -->
 
-    <section id="contact" class="page-section"></section>
+<section id="contact" class="page-section">
+
+    <div class="contact-heading">
+        <span class="section-label">LET'S CONNECT</span>
+        <h1>Get in Touch<span>.</span></h1>
+        <p class="page-intro">
+            Have a question, an idea, or a project in mind?
+            Feel free to reach out through any of my contact platforms.
+        </p>
+    </div>
+
+    <div class="contact-container">
+
+        <!-- PHONE -->
+        <a class="contact-card" href="tel:09625343281">
+            <div class="contact-icon">☎</div>
+            <div class="contact-info">
+                <span>PHONE NUMBER</span>
+                <h3>09625343281</h3>
+                <small>Click to call</small>
+            </div>
+            <span class="contact-arrow">↗</span>
+        </a>
+
+        <!-- GMAIL -->
+        <a class="contact-card" href="mailto:raiqow@gmail.com">
+            <div class="contact-icon">✉</div>
+            <div class="contact-info">
+                <span>EMAIL ADDRESS</span>
+                <h3>raiqow@gmail.com</h3>
+                <small>Click to send an email</small>
+            </div>
+            <span class="contact-arrow">↗</span>
+        </a>
+
+        <!-- YOUTUBE -->
+        <a class="contact-card"
+           href="https://youtube.com/@claddish?si=F7LOUmZ_uHCCz6RB"
+           target="_blank"
+           rel="noopener noreferrer">
+            <div class="contact-icon">▶</div>
+            <div class="contact-info">
+                <span>YOUTUBE</span>
+                <h3>Claddish</h3>
+                <small>https://youtube.com/@claddish?si=F7LOUmZ_uHCCz6RB</small>
+            </div>
+            <span class="contact-arrow">↗</span>
+        </a>
+
+        <!-- FACEBOOK -->
+        <a class="contact-card"
+           href="https://www.facebook.com/share/1RcUhCzoq1/"
+           target="_blank"
+           rel="noopener noreferrer">
+            <div class="contact-icon">Facebook</div>
+            <div class="contact-info">
+                <span>FACEBOOK</span>
+                <h3>Railey Vale Salugao</h3>
+                <small>https://www.facebook.com/share/1RcUhCzoq1/</small>
+            </div>
+            <span class="contact-arrow">↗</span>
+        </a>
+
+    </div>
+
+    <div class="contact-note">
+        <p>Thank you for visiting my portfolio!</p>
+        <span>I'm always open to new ideas and opportunities.</span>
+    </div>
+
+</section>
+
 
 </main>
 
@@ -625,7 +1368,12 @@ footer {
 
 <!-- JAVASCRIPT NAVIGATION -->
 
+
 <script>
+
+// =================================
+// NAVIGATION
+// =================================
 
 document.querySelectorAll("[data-section]").forEach(function (control) {
 
@@ -636,21 +1384,14 @@ document.querySelectorAll("[data-section]").forEach(function (control) {
         const target = control.getAttribute("data-section");
 
         document.querySelectorAll(".page-section").forEach(function (section) {
-
-            section.classList.toggle(
-                "active",
-                section.id === target
-            );
-
+            section.classList.toggle("active", section.id === target);
         });
 
         document.querySelectorAll(".nav-selector").forEach(function (button) {
-
             button.classList.toggle(
                 "active",
                 button.getAttribute("data-section") === target
             );
-
         });
 
         window.scrollTo({
@@ -661,6 +1402,115 @@ document.querySelectorAll("[data-section]").forEach(function (control) {
     });
 
 });
+
+
+// =================================
+// ABOUT ACCORDION
+// =================================
+
+const accordions = document.querySelectorAll(".about-accordion");
+
+accordions.forEach(function (accordion) {
+
+    accordion.addEventListener("toggle", function () {
+
+        if (accordion.open) {
+
+            accordions.forEach(function (otherAccordion) {
+
+                if (otherAccordion !== accordion) {
+                    otherAccordion.open = false;
+                }
+
+            });
+
+        }
+
+    });
+
+});
+
+
+// =================================
+// GALLERY CAROUSEL
+// =================================
+
+const slides = document.querySelectorAll(".gallery-slide");
+const dots = document.querySelectorAll(".gallery-dot");
+
+let currentSlide = 0;
+
+const galleryInformation = [
+    {
+        title: "My Introduction",
+        description: "A short introduction about myself."
+    },
+    {
+        title: "Academic Life",
+        description: "A glimpse into my academic journey."
+    },
+    {
+        title: "Programming Journey",
+        description: "My experiences and progress in programming."
+    },
+    {
+        title: "Projects and Creations",
+        description: "Some of the projects I have worked on."
+    },
+    {
+        title: "Achievements",
+        description: "Achievements and milestones I am proud of."
+    },
+    {
+        title: "Experiences",
+        description: "Memorable experiences throughout my journey."
+    },
+    {
+        title: "Memories",
+        description: "A collection of meaningful memories."
+    }
+];
+
+function showGallerySlide(index) {
+
+    currentSlide = (index + slides.length) % slides.length;
+
+    slides.forEach(function (slide, i) {
+        slide.classList.toggle("active", i === currentSlide);
+    });
+
+    dots.forEach(function (dot, i) {
+        dot.classList.toggle("active", i === currentSlide);
+    });
+
+    document.getElementById("gallery-current").textContent =
+        String(currentSlide + 1).padStart(2, "0");
+
+    document.getElementById("gallery-title").textContent =
+        galleryInformation[currentSlide].title;
+
+    document.getElementById("gallery-text").textContent =
+        galleryInformation[currentSlide].description;
+
+}
+
+document.getElementById("gallery-prev").addEventListener("click", function () {
+    showGallerySlide(currentSlide - 1);
+});
+
+document.getElementById("gallery-next").addEventListener("click", function () {
+    showGallerySlide(currentSlide + 1);
+});
+
+dots.forEach(function (dot) {
+
+    dot.addEventListener("click", function () {
+        showGallerySlide(Number(dot.dataset.slide));
+    });
+
+});
+
+showGallerySlide(0);
 
 </script>
 
