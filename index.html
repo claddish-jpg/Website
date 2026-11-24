@@ -160,8 +160,6 @@ h3 {
     color: #fffafc;
 }
 
-/* PORTFOLIO PROJECT BUTTONS */
-
 .projects {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -196,7 +194,7 @@ h3 {
     transform: scale(0.98);
 }
 
-/* FOOTER */
+
 
 footer {
     width: 100%;
@@ -258,8 +256,6 @@ footer {
     text-align: center;
     font-size: 14px;
 }
-
-/* MOBILE RESPONSIVENESS */
 
 @media (max-width: 768px) {
 
@@ -348,10 +344,6 @@ footer {
     }
 }
 
-    
-/* =================================
-   ABOUT SECTION
-================================= */
 
 .about-heading {
     text-align: center;
@@ -445,7 +437,6 @@ footer {
     }
 }
 
-/* PROFILE CARD */
 
 .about-profile {
     background: var(--pink);
@@ -515,10 +506,6 @@ footer {
     margin: 4px 0 0;
     color: var(--text);
 }
-
-/* =================================
-   GALLERY SECTION
-================================= */
 
 .gallery-heading {
     text-align: center;
@@ -669,7 +656,7 @@ footer {
     margin-top: 20px;
 }
 
-/* MOBILE ABOUT AND GALLERY */
+
 
 @media (max-width: 700px) {
     .about-container {
@@ -691,9 +678,6 @@ footer {
     }
     }
     
-/* =================================
-   CONTACT SECTION
-================================= */
 
 .contact-heading {
     text-align: center;
@@ -1001,9 +985,7 @@ footer {
     </div>
 
 </section>
-<!-- =================================
-     GALLERY SECTION
-================================= -->
+    <!-- Gallery Section -->
 
 <section id="gallery" class="page-section">
 
@@ -1206,10 +1188,6 @@ footer {
 
     </section>
 
-    <!-- SKILLS SECTION -->
-
-    <section id="skills" class="page-section"></section>
-
 <!-- CONTACT SECTION -->
 
 <section id="contact" class="page-section">
@@ -1314,11 +1292,11 @@ footer {
 
                 <div class="socials">
 
-                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
 
                     <a href="#" aria-label="YouTube">▶</a>
 
-                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
 
                 </div>
 
@@ -1336,12 +1314,8 @@ footer {
 
 <!-- JAVASCRIPT NAVIGATION -->
 
-
 <script>
 
-// =================================
-// NAVIGATION
-// =================================
 
 document.querySelectorAll("[data-section]").forEach(function (control) {
 
@@ -1371,11 +1345,6 @@ document.querySelectorAll("[data-section]").forEach(function (control) {
 
 });
 
-
-// =================================
-// ABOUT ACCORDION
-// =================================
-
 const accordions = document.querySelectorAll(".about-accordion");
 
 accordions.forEach(function (accordion) {
@@ -1397,11 +1366,6 @@ accordions.forEach(function (accordion) {
     });
 
 });
-
-
-// =================================
-// GALLERY CAROUSEL
-// =================================
 
 const slides = document.querySelectorAll(".gallery-slide");
 const dots = document.querySelectorAll(".gallery-dot");
